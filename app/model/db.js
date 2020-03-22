@@ -4,14 +4,14 @@ var mysql = require("mysql");
 
 //local mysql db connection
 var connection = mysql.createConnection({
-  host: "localhost",
-  port:"3306",
-  user: "root",
-  password: "1234",
-  database: "restful"
+  host: "readalright.clmzfnhaoacq.us-east-1.rds.amazonaws.com",
+  port: "3306",
+  user: "admin",
+  password: "readalright",
+  database: "ReadAlright"
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) throw err;
 });
 

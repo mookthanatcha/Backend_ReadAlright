@@ -8,7 +8,7 @@ var Category = function (category) {
 };
 
 Category.getAllCategory = function (result) {
-    sql.query("Select * from category", function (err, res) {
+    sql.query("Select * from Category", function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err)

@@ -35,7 +35,7 @@ Reading.getAllReading = function (result) {
 // };
 
 Reading.getReadingByCategoryId = function(categoryId, result) {
-    sql.query("Select * from reading join category on reading.category_id = category.category_id where reading.category_id = ?", categoryId, function(
+    sql.query("Select * from reading join Category on reading.category_id = Category.category_id where reading.category_id = ?", categoryId, function(
       err,
       res
     ) {
@@ -44,7 +44,7 @@ Reading.getReadingByCategoryId = function(categoryId, result) {
         result(err, null);
       } else {
         result(null, res);
-      }
+      }npm
     });
   };
 

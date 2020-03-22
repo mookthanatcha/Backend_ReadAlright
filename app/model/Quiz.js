@@ -6,7 +6,7 @@ var Quiz = function(quiz) {
 };
 
 Quiz.createQuiz = function(newQuiz, result) {
-  sql.query("INSERT INTO quiz set ?", newQuiz, function(err, res) {
+  sql.query("INSERT INTO Quiz set ?", newQuiz, function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -23,7 +23,7 @@ Quiz.createQuiz = function(newQuiz, result) {
 
 
 Quiz.getAllQuiz = function(result) {
-  sql.query("Select * from quiz", function(err, res) {
+  sql.query("Select * from Quiz", function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
