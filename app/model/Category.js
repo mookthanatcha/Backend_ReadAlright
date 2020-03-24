@@ -19,5 +19,17 @@ Category.getAllCategory = function (result) {
     })
 };
 
+Category.getReadCategory = function (result) {
+    sql.query("SELECT * FROM Category where typeName = 'Reading'", function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err)
+        } else {
+            console.log("answer: ", res);
+            result(null, res)
+        }
+    })
+};
+
 
 module.exports = Category;

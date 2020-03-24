@@ -10,3 +10,12 @@ exports.list_all_category = function (req, res) {
         res.send(category);
     });
 };
+
+exports.list_read_category = function (req, res) {
+    Category.getReadCategory(function (err, category) {
+        console.log("controller");
+        if (err) res.send(err);
+        console.log("res", category);
+        res.send(category);
+    });
+};

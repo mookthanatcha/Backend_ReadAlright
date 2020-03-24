@@ -58,4 +58,7 @@ module.exports = function (app) {
     .get(todoViews.list_all_views)
     .post(todoViews.create_a_views);
 
+  app.route("/categorys/reading")
+  .get(todoCategory.list_read_category);
+
 };
