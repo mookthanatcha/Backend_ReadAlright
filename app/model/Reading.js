@@ -20,6 +20,22 @@ Reading.getAllReading = function (result) {
     });
 };
 
+Reading.createReading = function(newRead, result) {
+  sql.query("INSERT INTO reading set ?", newRead, function(err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      console.log("eiei");
+      console.log(res.message);
+      console.log(res.insertId);
+      result(null, res.insertId, res.message);
+    }
+  });
+};
+
 // Reading.getReadingByCategoryId = function (categoryId, result) {
 //     sql.query("Select * from reading where category_id = ?", categoryId, function (
 //         err,

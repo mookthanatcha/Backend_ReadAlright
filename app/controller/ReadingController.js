@@ -17,6 +17,17 @@ exports.read_a_reading_category_id = function (req, res) {
         res.json({ reading,"non":"mook"});
     });
 };
+
+exports.create_a_reading = function (req, res) {
+    var new_reading = new Quiz(req.body);
+    Reading.createReading(new_reading, function (err, quiz) {
+      if (err) res.send(err);
+      res.json({ error: "Invalid input", msg: res.message, quiz });
+    });
+  };
+
+  
+
 // categoryIdList= [5,7,20,5,5]
 
 // for(int i = 0;i<categoryIdList.length;i++){

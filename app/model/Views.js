@@ -1,7 +1,6 @@
 var sql = require("./db.js")
 
 var Views = function (views) {
-    this.views_id = views.views_id,
     this.numOfView  = views.numOfView,
     this.category_id = views.category_id,
     this.user_id  = views.user_id,
