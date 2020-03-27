@@ -60,7 +60,7 @@ Reading.getReadingByCategoryId = function(categoryId, result) {
         result(err, null);
       } else {
         result(null, res);
-      }npm
+      }
     });
   };
 
