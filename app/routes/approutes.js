@@ -62,4 +62,7 @@ module.exports = function (app) {
   app.route("/categorys/reading")
   .get(todoCategory.list_read_category);
 
+  app.route("/reading/readingId/:readingId")
+  .get(todoReading.read_a_reading_id);
+
 };

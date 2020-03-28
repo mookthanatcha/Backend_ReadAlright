@@ -11,4 +11,4 @@ exports.list_all_news = function (req, res) {
         res.send(articlesResponse);
 
     });
-}
+} 

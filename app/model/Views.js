@@ -19,7 +19,7 @@ Views.getAllViews = function (result) {
         }
     });
 };
-
+ 
 Views.createViews = function(newViews, result) {
     sql.query("INSERT INTO views set ?", newViews, function(err, res) {
       if (err) {
@@ -32,5 +32,5 @@ Views.createViews = function(newViews, result) {
     });
   };
   
-
+ 
 module.exports = Views;

@@ -19,15 +19,22 @@ exports.read_a_reading_category_id = function (req, res) {
 };
     
 exports.create_a_reading = function (req, res) {
-    var new_reading = new Quiz(req.body);
+    var new_reading = new Reading(req.body);
     Reading.createReading(new_reading, function (err, quiz) {
       if (err) res.send(err);
       res.json({ error: "Invalid input", msg: res.message, quiz });
     });
   };
 
-  
+  exports.read_a_reading_id = function (req, res) {
+    Reading.getReadingByReadingId(req.params.readingId, function (err, reading) {
+        if (err) res.send(err);
+        res.json({ reading});
+    });
+  };
 
+  
+ 
 // categoryIdList= [5,7,20,5,5]
 
 // for(int i = 0;i<categoryIdList.length;i++){

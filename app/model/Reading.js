@@ -16,9 +16,9 @@ Reading.getAllReading = function (result) {
         } else {
             console.log("Reading : ", res);
             result(null, res);
-        }
+        } 
     });
-};
+};    
 
 Reading.createReading = function(newRead, result) {
   sql.query("INSERT INTO reading set ?", newRead, function(err, res) {
@@ -34,7 +34,7 @@ Reading.createReading = function(newRead, result) {
       result(null, res.insertId, res.message);
     }
   });
-};
+};    
 
 // Reading.getReadingByCategoryId = function (categoryId, result) {
 //     sql.query("Select * from reading where category_id = ?", categoryId, function (
@@ -63,5 +63,19 @@ Reading.getReadingByCategoryId = function(categoryId, result) {
       }
     });
   };
+
+  Reading.getReadingByReadingId = function(readingId, result) {
+    sql.query("Select * from reading join Category on reading.category_id = Category.category_id where reading.reading_id = ?", readingId, function(
+      err,
+      res
+    ) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    });
+  }
 
 module.exports = Reading;
