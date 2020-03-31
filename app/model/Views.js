@@ -31,6 +31,18 @@ Views.createViews = function(newViews, result) {
       }
     });
   };
+
+  Views.deleteViews = function(newViews, result) {
+    sql.query("DELETE FROM views WHERE category_id = ?';", newViews, function(err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        console.log(res.insertId);
+        result(null, res.insertId);
+      }
+    });
+  };
   
  
 module.exports = Views;
