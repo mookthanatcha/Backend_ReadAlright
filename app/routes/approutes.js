@@ -65,4 +65,7 @@ module.exports = function (app) {
   app.route("/reading/readingId/:readingId")
   .get(todoReading.read_a_reading_id);
 
-};
+  app.route("/newReading")
+  .get(todoReading.read_a_reading_new);
+
+};  

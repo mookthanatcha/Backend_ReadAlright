@@ -16,24 +16,34 @@ exports.read_a_reading_category_id = function (req, res) {
         if (err) res.send(err);
         res.json({ reading});
     });
-};
-    
+}; 
+       
 exports.create_a_reading = function (req, res) {
     var new_reading = new Reading(req.body);
     Reading.createReading(new_reading, function (err, quiz) {
       if (err) res.send(err);
       res.json({ error: "Invalid input", msg: res.message, quiz });
-    });
-  }; 
- 
+    }); 
+  };          
+      
   exports.read_a_reading_id = function (req, res) {
     Reading.getReadingByReadingId(req.params.readingId, function (err, reading) {
         if (err) res.send(err);
         res.json({ reading});
-    });
+    }); 
   };
 
- 
+  exports.read_a_reading_new = function (req, res) {
+    Reading.getNewReading(function (err, answer) {
+      console.log("controller");
+      if (err) res.send(err);
+      console.log("res", answer);
+      res.send(answer);
+  });
+  };
+
+  
+     
   
 // categoryIdList= [5,7,20,5,5]
 

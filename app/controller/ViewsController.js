@@ -19,9 +19,9 @@ exports.create_a_views = function (req, res) {
         if (err) res.send(err);
         res.json(views);
     });
-}
-
-exports.delete_a_views = function (req, res) {
+}  
+  
+exports.delete_a_views = function (req, res) { 
     var new_views = new Views(req.body);
 
 

@@ -78,4 +78,15 @@ Reading.getReadingByCategoryId = function(categoryId, result) {
     });
   }
 
-module.exports = Reading;
+  Reading.getNewReading = function(result) {
+    sql.query("SELECT * FROM reading ORDER BY reading_id DESC LIMIT 5;", function(err,res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    });
+  }
+
+module.exports = Reading; 
