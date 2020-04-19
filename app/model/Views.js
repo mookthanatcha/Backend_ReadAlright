@@ -9,7 +9,7 @@ var Views = function (views) {
 };
 
 Views.getAllViews = function (result) {
-    sql.query("Select * from views", function (err, res) {
+    sql.query("Select * from Views", function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -21,7 +21,7 @@ Views.getAllViews = function (result) {
 };
  
 Views.createViews = function(newViews, result) {
-    sql.query("INSERT INTO views set ?", newViews, function(err, res) {
+    sql.query("INSERT INTO Views set ?", newViews, function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -33,7 +33,7 @@ Views.createViews = function(newViews, result) {
   };
 
   Views.deleteViews = function(newViews, result) {
-    sql.query("DELETE FROM views WHERE category_id = ?';", newViews, function(err, res) {
+    sql.query("DELETE FROM Views WHERE category_id = ?';", newViews, function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(err, null);
