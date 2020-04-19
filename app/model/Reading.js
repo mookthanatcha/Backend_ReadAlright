@@ -87,6 +87,6 @@ Reading.getReadingByCategoryId = function(categoryId, result) {
         result(null, res);
       }
     });
-  }
-
-module.exports = Reading; 
+  }   
+ 
+module.exports = Reading;    
