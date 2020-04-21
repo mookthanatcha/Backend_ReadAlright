@@ -5,7 +5,8 @@ var Views = function (views) {
     this.category_id = views.category_id,
     this.user_id  = views.user_id,
     this.reading_id = views.reading_id,
-    this.vocabBox_id = views.vocabBox_id
+    this.vocabBox_id = views.vocabBox_id,
+    this.is_Active = views.is_Active
 };
 
 Views.getAllViews = function (result) {
@@ -45,4 +46,4 @@ Views.createViews = function(newViews, result) {
   };
   
  
-module.exports = Views;
+module.exports = Views;    
