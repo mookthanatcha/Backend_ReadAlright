@@ -12,10 +12,17 @@ exports.list_all_Reading = function (req, res) {
 };
 
 exports.read_a_reading_category_id = function (req, res) {
-    Reading.getReadingByCategoryId(req.params.categoryId, function (err, reading) {
+    Reading.getReadingByCategoryId(req.params.userId, function (err, reading) {
         if (err) res.send(err);
         res.json({ reading});
     });
+}; 
+
+exports.read_a_reading_interest = function (req, res) {
+  Reading.getReadingInterest(req.params.categoryId, function (err, reading) {
+      if (err) res.send(err);
+      res.json({ reading});
+  });
 }; 
        
 exports.create_a_reading = function (req, res) {

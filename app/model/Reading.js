@@ -50,9 +50,24 @@ Reading.createReading = function (newRead, result) {
 //     });
 // };
 
-Reading.getReadingByCategoryId = function (categoryId, result) {
+Reading.getReadingByCategoryId = function (userId, result) {
   sql.query(
-    "Select * from reading join Category on reading.category_id = Category.category_id join Views on reading.reading_id = Views.reading_id where reading.category_id = ? AND Views.is_Active = '0'",
+    "SELECT * FROM reading r WHERE NOT EXISTS ( SELECT * FROM Views v WHERE r.reading_id = v.reading_id and user_id= ?)",
+    userId,
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
+
+Reading.getReadingInterest = function (categoryId, result) {
+  sql.query(
+    "Select * from reading join Category on reading.category_id = Category.category_id where reading.category_id = ?",
     categoryId,
     function (err, res) {
       if (err) {

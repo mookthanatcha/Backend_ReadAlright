@@ -52,7 +52,7 @@ module.exports = function (app) {
     .get(todoReading.list_all_Reading)
     .post(todoReading.create_a_reading);
 
-  app.route("/reading/categorys/:categoryId")
+  app.route("/reading/user/:userId")
     .get(todoReading.read_a_reading_category_id);
 
   app.route("/views")
@@ -67,5 +67,8 @@ module.exports = function (app) {
 
   app.route("/newReading")
   .get(todoReading.read_a_reading_new);
+
+  app.route("/reading/interest/:categoryId")
+  .get(todoReading.read_a_reading_interest);
 
 };  
