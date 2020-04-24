@@ -17,12 +17,12 @@ exports.create_a_quiz = function (req, res) {
 
   //handles null error
 
-  Quiz.createQuiz(new_quiz, function (err, quiz) {
+  Quiz.createQuiz(new_quiz, function (err, quiz) { 
     if (err) res.send(err);
     res.json({ error: "Invalid input", msg: res.message, quiz });
   });
 };
-
+ 
 // exports.read_a_plan = function(req, res) {
 //   Plan.getPlanById(req.params.planId, function(err, plan) {
 //     if (err) res.send(err);

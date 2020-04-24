@@ -1,11 +1,12 @@
 "use strict";
 module.exports = function (app) {
   var todoAnswer = require("../controller/AnswerController");
-  var todoNews = require("../controller/NewsController");
   var todoCategory = require("../controller/CategoryController");
   var todoReading = require("../controller/ReadingController");
   var todoQuiz = require("../controller/QuizController");
   var todoViews = require("../controller/ViewsController");
+  var todoVocabBox = require("../controller/VocabBoxController")
+
 
 
 
@@ -15,8 +16,8 @@ module.exports = function (app) {
     .get(todoAnswer.list_all_answers)
     .post(todoAnswer.create_a_answer);
 
-  app.route("/news")
-    .get(todoNews.list_all_news);
+  // app.route("/news")
+  //   .get(todoNews.list_all_news);
 
   // app
   //   .route("/tasks/:taskId")
@@ -33,7 +34,7 @@ module.exports = function (app) {
   app
     .route("/quizs")
     .get(todoQuiz.list_all_quizs)
-    .post(todoQuiz.create_a_quiz);
+    .post(todoQuiz.create_a_quiz); 
 
   // app
   //   .route("/plans/:planId")
@@ -71,4 +72,8 @@ module.exports = function (app) {
   app.route("/reading/interest/:categoryId")
   .get(todoReading.read_a_reading_interest);
 
+  app.route("/vocabBox")
+  .get(todoVocabBox.list_all_vocabBox);
+
 };  
+  
