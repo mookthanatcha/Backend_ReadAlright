@@ -6,7 +6,8 @@ module.exports = function (app) {
   var todoQuiz = require("../controller/QuizController");
   var todoViews = require("../controller/ViewsController");
   var todoVocabBox = require("../controller/VocabBoxController")
-
+  var todoChoice = require("../controller/QuestionChoices")
+  var todoVocabCard = require("../controller/VocabCardController")
 
 
 
@@ -43,7 +44,7 @@ module.exports = function (app) {
   //   .delete(todoPlan.delete_a_plan);
 
   app.get("/score", function (req, res) {
-    res.json("Your score")
+    res.json("Your score") 
   });
 
   app.route("/categorys")
@@ -59,7 +60,7 @@ module.exports = function (app) {
   app.route("/views")
     .get(todoViews.list_all_views)
     .post(todoViews.create_a_views);
-
+ 
   app.route("/categorys/reading")
   .get(todoCategory.list_read_category);
 
@@ -75,5 +76,11 @@ module.exports = function (app) {
   app.route("/vocabBox")
   .get(todoVocabBox.list_all_vocabBox);
 
+  app.route("/choice")
+  .get(todoChoice.list_all_choice);
+
+  app.route("/vocabCard")
+  .get(todoVocabCard.list_all_vocabCard);
+
 };  
-  
+   

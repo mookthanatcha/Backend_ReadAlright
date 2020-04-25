@@ -14,7 +14,7 @@ Category.getAllCategory = function (result) {
             result(null, err)
         } else {
             console.log("answer: ", res);
-            result(null, res)
+            result(null, res) 
         }
     })
 };
