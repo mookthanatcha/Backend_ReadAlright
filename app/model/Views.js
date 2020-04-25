@@ -17,8 +17,8 @@ Views.getAllViews = function (result) {
         } else {
             console.log("Reading : ", res);
             result(null, res);
-        }
-    });
+        } 
+    }); 
 };
  
 Views.createViews = function(newViews, result) {

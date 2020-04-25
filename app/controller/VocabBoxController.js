@@ -11,6 +11,15 @@ exports.list_all_vocabBox = function(req,res){
     })
 }
 
+exports.read_a_vocab_new = function (req, res) {
+    VocabBox.getNewVocab(function (err, answer) {
+      console.log("controller");
+      if (err) res.send(err);
+      console.log("res", answer);
+      res.send(answer);
+  });
+  };
+
 // exports.create_a_views = function (req, res) {
 //     var new_views = new Views(req.body);
 

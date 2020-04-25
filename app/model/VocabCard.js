@@ -11,11 +11,11 @@ VocabCard.getAllVocabCard = function(result) {
     sql.query("Select * from VocabCard", function(err,res){
         if (err) {
             console.log("error: ", err);
-            result(null, err);
+            result(null, err); 
         } else {
             console.log("Reading : ", res);
             result(null, res);
         }
-    });
+    }); 
 }
-module.exports = VocabCard;     
+module.exports = VocabCard;      

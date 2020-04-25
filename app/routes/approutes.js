@@ -82,5 +82,11 @@ module.exports = function (app) {
   app.route("/vocabCard")
   .get(todoVocabCard.list_all_vocabCard);
 
+  app.route("/categorys/vocab")
+  .get(todoCategory.list_vocab_category);
+
+  app.route("/newVocab")
+  .get(todoVocabBox.read_a_vocab_new);
+
 };  
-   
+      

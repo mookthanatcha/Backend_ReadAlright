@@ -31,5 +31,17 @@ Category.getReadCategory = function (result) {
     })
 };
 
+Category.getvocabCategory = function (result) {
+    sql.query("SELECT * FROM Category where typeName = 'Vocab'", function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err)
+        } else {
+            console.log("answer: ", res);
+            result(null, res)
+        }
+    })
+};
+
 
 module.exports = Category;

@@ -3,7 +3,6 @@ var sql = require("./db.js")
 var VocabBox = function (vocabBox) {
     this.boxEngName  = vocabBox.boxEngName,
     this.boxThaiName = vocabBox.boxThaiName,
-    this.image  = vocabBox.image,
     this.category_id = vocabBox.category_id
 };
 
@@ -19,41 +18,19 @@ VocabBox.getAllVocabBox = function(result) {
     });
 }
 
-// Views.getAllViews = function (result) {
-//     sql.query("Select * from Views", function (err, res) {
-//         if (err) {
-//             console.log("error: ", err);
-//             result(null, err);
-//         } else {
-//             console.log("Reading : ", res); 
-//             result(null, res);
-//         }
-//     });
-// };
- 
-// Views.createViews = function(newViews, result) {
-//     sql.query("INSERT INTO Views set ?", newViews, function(err, res) {
-//       if (err) {
-//         console.log("error: ", err);
-//         result(err, null);
-//       } else {
-//         console.log(res.insertId);
-//         result(null, res.insertId);
-//       }
-//     });
-//   };
-
-//   Views.deleteViews = function(newViews, result) {
-//     sql.query("DELETE FROM Views WHERE category_id = ?';", newViews, function(err, res) {
-//       if (err) {
-//         console.log("error: ", err);
-//         result(err, null);
-//       } else {
-//         console.log(res.insertId);
-//         result(null, res.insertId);
-//       }
-//     });
-//   };
+VocabBox.getNewVocab = function (result) {
+    sql.query(
+      "SELECT * FROM VocabBox b join VocabCard c on b.vocabBox_id = c.vocabBox_id GROUP BY b.boxEngName order by c.vocabBox_id DESC LIMIT 5;",
+      function (err, res) {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
   
  
 module.exports = VocabBox;    
