@@ -16,21 +16,21 @@ Quiz.createQuiz = function(newQuiz, result) {
     } else {
       res.message = "Okay";
       console.log(res);
-      console.log("eiei");
+      // console.log("eiei");
       console.log(res.message);
       console.log(res.insertId);
       result(null, res.insertId, res.message);
     }
   });
-};
-
+}; 
+ 
 
 Quiz.getAllQuiz = function(result) {
   sql.query("Select * from Question", function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
-    } else {
+    } else {  
       console.log("tasks : ", res);
 
       result(null, res);

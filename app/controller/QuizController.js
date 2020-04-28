@@ -8,7 +8,7 @@ exports.list_all_quizs = function (req, res) {
     console.log("controller");
     if (err) res.send(err);
     console.log("res", quiz);
-    res.status(200).json({ non: "Love you", quiz });
+    res.status(200).json({quiz });
   });
 };
 
