@@ -38,4 +38,19 @@ Quiz.getAllQuiz = function(result) {
   });
 };
 
+
+Quiz.getQuizByQuizId = function(quizId, result) {
+  sql.query("Select * from Question where question_id = ?", quizId, function(
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 module.exports = Quiz;

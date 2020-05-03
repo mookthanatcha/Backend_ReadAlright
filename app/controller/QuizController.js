@@ -3,12 +3,11 @@
 var Quiz = require("../model/Quiz.js");
 
 exports.list_all_quizs = function (req, res) {
-  
   Quiz.getAllQuiz(function (err, quiz) {
     console.log("controller");
     if (err) res.send(err);
     console.log("res", quiz);
-    res.status(200).json({quiz });
+    res.status(200).json({ quiz });
   });
 };
 
@@ -17,12 +16,19 @@ exports.create_a_quiz = function (req, res) {
 
   //handles null error
 
-  Quiz.createQuiz(new_quiz, function (err, quiz) { 
+  Quiz.createQuiz(new_quiz, function (err, quiz) {
     if (err) res.send(err);
     res.json({ error: "Invalid input", msg: res.message, quiz });
   });
 };
- 
+
+exports.get_a_quiz_by_id = function (req, res) {
+  Quiz.getQuizByQuizId(req.params.quizId, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ quiz });
+  });
+};
+
 // exports.read_a_plan = function(req, res) {
 //   Plan.getPlanById(req.params.planId, function(err, plan) {
 //     if (err) res.send(err);

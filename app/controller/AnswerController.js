@@ -22,7 +22,7 @@ exports.create_a_answer = function (req, res) {
 exports.read_a_answer_quiz_id = function (req, res) {
     Answer.getAnswerByQuizId(req.params.quizId, function (err, answer) {
         if (err) res.send(err);
-        res.json({ answer, "non": "eiei" });
+        res.json({ answer });
     });
 };
 

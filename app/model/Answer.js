@@ -21,7 +21,7 @@ Answer.createAnswer = function(newAnswer, result) {
 
 
 Answer.getAnswerByQuizId = function(quizId, result) {
-  sql.query("Select * from answer where quiz_id = ? and isTrue = 1", quizId, function(
+  sql.query("Select * from Answer where quiz_id = ?", quizId, function(
     err,
     res
   ) {
