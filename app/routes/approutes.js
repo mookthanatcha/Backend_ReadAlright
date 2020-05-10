@@ -20,12 +20,13 @@ module.exports = function (app) {
   //Quiz
   app.route("/quizs").get(todoQuiz.list_all_quizs).post(todoQuiz.create_a_quiz);
   app.route("/quiz/:quizId").get(todoQuiz.get_a_quiz_by_id);
+  app.route("/quiz/type/:type/:reading_id").get(todoQuiz.get_a_quiz_by_type);
 
   //Choice 
   app.route("/choice/:quizId").get(todoChoice.get_a_choice_by_question_id);
   app.route("/choice").get(todoChoice.list_all_choice);
   //Reading
-
+ 
   app
     .route("/reading")
     .get(todoReading.list_all_Reading)

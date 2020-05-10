@@ -29,6 +29,13 @@ exports.get_a_quiz_by_id = function (req, res) {
   });
 };
 
+exports.get_a_quiz_by_type = function (req, res) {
+  Quiz.getQuizByType(req.params.type,req.params.reading_id, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ quiz });
+  });
+};
+
 // exports.read_a_plan = function(req, res) {
 //   Plan.getPlanById(req.params.planId, function(err, plan) {
 //     if (err) res.send(err);
