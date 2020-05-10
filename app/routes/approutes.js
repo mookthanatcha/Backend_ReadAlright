@@ -58,4 +58,7 @@ module.exports = function (app) {
   app.get("/score", function (req, res) {
     res.json("Your score");
   });
+
+  app.route("/pretest").get(todoQuiz.list_Pretest)
 };
+ 

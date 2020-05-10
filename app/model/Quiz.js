@@ -65,4 +65,18 @@ Quiz.getQuizByType = function (type, reading_id, result) {
   });
 };
 
+Quiz.getQuizPretest = function (result) {
+  sql.query("Select * from Question where typeOfQuestion = 'c'", function (
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 module.exports = Quiz;
