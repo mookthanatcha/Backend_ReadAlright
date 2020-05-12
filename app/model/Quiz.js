@@ -60,7 +60,7 @@ Quiz.getQuizByType = function (type, reading_id, result) {
       console.log("error: ", err);
       result(err, null);
     } else {
-      result(null, res);
+      result(null, res); 
     }
   });
 };

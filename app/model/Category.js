@@ -4,6 +4,7 @@ var sql = require("./db.js")
 
 var Category = function (category) {
     this.categoryName = category.categoryName,
+    this.typeName = category.typeName,
     this.image = category.image
 };
 
@@ -16,7 +17,7 @@ Category.getAllCategory = function (result) {
             console.log("answer: ", res);
             result(null, res) 
         }
-    })
+    }) 
 };
 
 Category.getReadCategory = function (result) {
