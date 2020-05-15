@@ -1,6 +1,7 @@
 "use strict";
 
 var Quiz = require("../model/Quiz.js");
+var Choice = require("../model/QuestionChoices");
 
 exports.list_all_quizs = function (req, res) {
   Quiz.getAllQuiz(function (err, quiz) {
@@ -24,13 +25,17 @@ exports.create_a_quiz = function (req, res) {
 
 exports.get_a_quiz_by_id = function (req, res) {
   Quiz.getQuizByQuizId(req.params.quizId, function (err, quiz) {
-    if (err) res.send(err);
-    res.json({ quiz });
+    Choice.getQuizByQuizId(req.params.quizId, function (err, choice) {
+      res.json({ quiz, choice });
+    });
   });
 };
 
 exports.get_a_quiz_by_type = function (req, res) {
-  Quiz.getQuizByType(req.params.type,req.params.reading_id, function (err, quiz) {
+  Quiz.getQuizByType(req.params.type, req.params.reading_id, function (
+    err,
+    quiz
+  ) {
     if (err) res.send(err);
     res.json({ quiz });
   });

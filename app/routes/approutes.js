@@ -27,7 +27,7 @@ module.exports = function (app) {
   app.route("/choice").get(todoChoice.list_all_choice);
   //Reading
  
-  app
+  app 
     .route("/reading")
     .get(todoReading.list_all_Reading)
     .post(todoReading.create_a_reading);
@@ -43,13 +43,13 @@ module.exports = function (app) {
   app.route("/categorys").get(todoCategory.list_all_category);
   app.route("/categorys/reading").get(todoCategory.list_read_category);
   app.route("/categorys/vocab").get(todoCategory.list_vocab_category);
-
+ 
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox);
   app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard);
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
-  //others
+  //others 
   app
     .route("/views")
     .get(todoViews.list_all_views)
@@ -61,4 +61,4 @@ module.exports = function (app) {
 
   app.route("/pretest").get(todoQuiz.list_Pretest)
 };
- 
+  

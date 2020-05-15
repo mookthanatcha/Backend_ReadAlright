@@ -38,7 +38,7 @@ Quiz.getAllQuiz = function (result) {
 };
 
 Quiz.getQuizByQuizId = function (quizId, result) {
-  sql.query("Select * from Question where question_id = ?", quizId, function (
+  sql.query("Select question from Question where question_id = ?", quizId, function (
     err,
     res
   ) {
@@ -60,7 +60,7 @@ Quiz.getQuizByType = function (type, reading_id, result) {
       console.log("error: ", err);
       result(err, null);
     } else {
-      result(null, res); 
+      result(null, res);
     }
   });
 };

@@ -18,7 +18,7 @@ Category.getAllCategory = function (result) {
             result(null, res) 
         }
     }) 
-};
+}; 
 
 Category.getReadCategory = function (result) {
     sql.query("SELECT * FROM Category where typeName = 'Reading'", function (err, res) {
