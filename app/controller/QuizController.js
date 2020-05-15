@@ -26,7 +26,7 @@ exports.create_a_quiz = function (req, res) {
 exports.get_a_quiz_by_id = function (req, res) {
   Quiz.getQuizByQuizId(req.params.quizId, function (err, quiz) {
     Choice.getQuizByQuizId(req.params.quizId, function (err, choice) {
-      res.json({ quiz, choice });
+      res.json({ quiz, data:choice });
     });
   });
 };
