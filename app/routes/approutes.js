@@ -8,6 +8,8 @@ module.exports = function (app) {
   var todoVocabBox = require("../controller/VocabBoxController");
   var todoChoice = require("../controller/QuestionChoices");
   var todoVocabCard = require("../controller/VocabCardController");
+  var todoTricks = require("../controller/TricksController");
+  var todoWordCol = require("../controller/WordCollectionController");
 
   //Answer
   app
@@ -60,5 +62,8 @@ module.exports = function (app) {
   });
 
   app.route("/pretest").get(todoQuiz.list_Pretest)
+  app.route("/suggestion").get(todoQuiz.list_Suggestion)
+  app.route("/tricks").get(todoTricks.list_all_tricks)
+  app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word)
 };
-  
+   

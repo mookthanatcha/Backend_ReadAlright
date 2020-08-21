@@ -79,4 +79,18 @@ Quiz.getQuizPretest = function (result) {
   });
 };
 
+Quiz.getSuggestion = function (result) {
+  sql.query("select t.suggestion from Question q join TypeOfSuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id group by t.suggestion;", function (
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 module.exports = Quiz;
