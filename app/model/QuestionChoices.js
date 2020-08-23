@@ -5,6 +5,8 @@ var Choice = function (choice) {
   this.isRightChoice = choice.isRightChoice;
   this.choice = choice.choice;
   this.question_id = choice.question_id;
+  this.optionText = choice.optionText;
+  this.value = choice.value;
 };
 
 Choice.getAllChoice = function (result) {

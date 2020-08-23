@@ -26,7 +26,12 @@ exports.create_a_quiz = function (req, res) {
 exports.get_a_quiz_by_id = function (req, res) {
   Quiz.getQuizByQuizId(req.params.quizId, function (err, quiz) {
     Choice.getQuizByQuizId(req.params.quizId, function (err, choice) {
-      res.json({ quiz, data: [{ choice: choice }] });
+      // res.json({ quiz, data: [{ choice: choice }] });
+      var temp = JSON.stringify(quiz)
+      var tempsub = temp.substring(13, temp.length - 2);
+      console.log(tempsub)
+      res.json({ questionText: tempsub, questionType: "SelectionGroup", options: choice });
+
     });
   });
 };
