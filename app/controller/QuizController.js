@@ -46,14 +46,14 @@ exports.get_a_quiz_by_type = function (req, res) {
   });
 };
 
-exports.list_Pretest = function (req, res) {
-  Quiz.getQuizPretest(function (err, quiz) {
-    console.log("controller");
-    if (err) res.send(err);
-    console.log("res", quiz);
-    res.status(200).json({ quiz });
-  });
-};
+// exports.list_Pretest = function (req, res) {
+//   Quiz.getQuizPretest(function (err, quiz) {
+//     console.log("controller");
+//     if (err) res.send(err);
+//     console.log("res", quiz);
+//     res.status(200).json({ quiz });
+//   });
+// };
 
 exports.list_Suggestion = function (req, res) {
   Quiz.getSuggestion(function (err, quiz) {

@@ -35,4 +35,20 @@ Choice.getQuizByQuizId = function (quizId, result) {
     }
   );
 };
+
+Choice.getCorrectChoice = function (result) {
+  sql.query(
+    "Select * from Question_Choices where isRightChoice = '1'",function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+    } else {
+      console.log("tasks : ", res);
+
+      result(null, res);
+    }
+  });
+};
+
+
 module.exports = Choice;

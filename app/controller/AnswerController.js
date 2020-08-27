@@ -26,3 +26,10 @@ exports.read_a_answer_quiz_id = function (req, res) {
     });
 };
 
+exports.get_suggestion_user_id = function (req, res) {
+    Answer.getSuggestionByUserId(req.params.userId, function (err, answer) {
+        if (err) res.send(err);
+        res.json({ answer });
+    });
+};
+

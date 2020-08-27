@@ -18,6 +18,8 @@ module.exports = function (app) {
     .post(todoAnswer.create_a_answer);
 
   app.route("/answers/quizs/:quizId").get(todoAnswer.read_a_answer_quiz_id);
+  app.route("/answer/suggestions/:userId").get(todoAnswer.get_suggestion_user_id);
+
 
   //Quiz
   app.route("/quizs").get(todoQuiz.list_all_quizs).post(todoQuiz.create_a_quiz);
@@ -27,9 +29,12 @@ module.exports = function (app) {
   //Choice 
   app.route("/choice/:quizId").get(todoChoice.get_a_choice_by_question_id);
   app.route("/choice").get(todoChoice.list_all_choice);
+  app.route("/correctChoices").get(todoChoice.list_correct_choice);
+
+
   //Reading
- 
-  app 
+
+  app
     .route("/reading")
     .get(todoReading.list_all_Reading)
     .post(todoReading.create_a_reading);
@@ -45,7 +50,7 @@ module.exports = function (app) {
   app.route("/categorys").get(todoCategory.list_all_category);
   app.route("/categorys/reading").get(todoCategory.list_read_category);
   app.route("/categorys/vocab").get(todoCategory.list_vocab_category);
- 
+
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox);
   app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard);
@@ -61,9 +66,8 @@ module.exports = function (app) {
     res.json("Your score");
   });
 
-  app.route("/pretest").get(todoQuiz.list_Pretest)
-  app.route("/suggestion").get(todoQuiz.list_Suggestion)
-  app.route("/tricks").get(todoTricks.list_all_tricks)
-  app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word)
+  // app.route("/pretest").get(todoQuiz.list_Pretest);
+  app.route("/suggestion").get(todoQuiz.list_Suggestion);
+  app.route("/tricks").get(todoTricks.list_all_tricks);
+  app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
 };
-   
