@@ -36,18 +36,33 @@ Choice.getQuizByQuizId = function (quizId, result) {
   );
 };
 
+Choice.getChoicePretest = function (readingId, result) {
+  sql.query(
+    "Select * from Question_Choices c join Question q  where c.question_id = q.question_id and typeOfQuestion = 'chal' and reading_id = ?",
+    readingId,
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
+
 Choice.getCorrectChoice = function (result) {
   sql.query(
-    "Select * from Question_Choices where isRightChoice = '1'",function (err, res) {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-    } else {
-      console.log("tasks : ", res);
+    "Select * from Question_Choices where isRightChoice = '1'", function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+      } else {
+        console.log("tasks : ", res);
 
-      result(null, res);
-    }
-  });
+        result(null, res);
+      }
+    });
 };
 
 

@@ -25,6 +25,7 @@ module.exports = function (app) {
   app.route("/quizs").get(todoQuiz.list_all_quizs).post(todoQuiz.create_a_quiz);
   app.route("/quiz/:quizId").get(todoQuiz.get_a_quiz_by_id);
   app.route("/quiz/type/:type/:reading_id").get(todoQuiz.get_a_quiz_by_type);
+  app.route("/quizInContent/:reading_id").get(todoQuiz.listChalengeInContent)
 
   //Choice 
   app.route("/choice/:quizId").get(todoChoice.get_a_choice_by_question_id);

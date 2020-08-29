@@ -23,6 +23,9 @@ exports.create_a_quiz = function (req, res) {
   });
 };
 
+
+
+
 exports.get_a_quiz_by_id = function (req, res) {
   Quiz.getQuizByQuizId(req.params.quizId, function (err, quiz) {
     Choice.getQuizByQuizId(req.params.quizId, function (err, choice) {
@@ -32,6 +35,18 @@ exports.get_a_quiz_by_id = function (req, res) {
       console.log(tempsub)
       res.json({ questionText: tempsub, questionType: "SelectionGroup", options: choice });
 
+    });
+  });
+};
+
+exports.listChalengeInContent = function (req, res) {
+  Quiz.getQuizPretest(req.params.reading_id, function (err, quiz) {
+    Choice.getChoicePretest(req.params.reading_id, function (err, choice) {
+      // res.json({ quiz, data: [{ choice: choice }] });
+      var temp = JSON.stringify(quiz)
+      var tempsub = temp.substring(13, temp.length - 2);
+      console.log(tempsub)
+      res.json({ questionText: tempsub, questionType: "SelectionGroup", options: choice });
     });
   });
 };
@@ -63,6 +78,8 @@ exports.list_Suggestion = function (req, res) {
     res.status(200).json({ quiz });
   });
 };
+
+
 // exports.read_a_plan = function(req, res) {
 //   Plan.getPlanById(req.params.planId, function(err, plan) {
 //     if (err) res.send(err);

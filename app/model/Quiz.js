@@ -51,6 +51,20 @@ Quiz.getQuizByQuizId = function (quizId, result) {
   });
 };
 
+Quiz.getQuizPretest = function (readingId, result) {
+  sql.query("Select question from Question where typeOfQuestion = 'chal' and reading_id = ?", readingId, function (
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 Quiz.getQuizByType = function (type, reading_id, result) {
   let selectedQuery =
     "Select * from ?? where typeOfQuestion = ? and reading_id = ?";
@@ -65,19 +79,7 @@ Quiz.getQuizByType = function (type, reading_id, result) {
   });
 };
 
-Quiz.getQuizPretest = function (result) {
-  sql.query("Select * from Question where typeOfQuestion = 'c'", function (
-    err,
-    res
-  ) {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-    } else {
-      result(null, res);
-    }
-  });
-};
+
 
 Quiz.getSuggestion = function (result) {
   sql.query("select t.suggestion from Question q join TypeOfSuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id group by t.suggestion;", function (
