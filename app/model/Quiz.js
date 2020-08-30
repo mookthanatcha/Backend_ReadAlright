@@ -52,7 +52,7 @@ Quiz.getQuizByQuizId = function (quizId, result) {
 };
 
 Quiz.getQuizPretest = function (readingId, result) {
-  sql.query("Select question from Question where typeOfQuestion = 'chal' and reading_id = ?", readingId, function (
+  sql.query("Select question_id from Question where typeOfQuestion = 'chal' and reading_id = ?", readingId, function (
     err,
     res
   ) {
