@@ -10,6 +10,8 @@ module.exports = function (app) {
   var todoVocabCard = require("../controller/VocabCardController");
   var todoTricks = require("../controller/TricksController");
   var todoWordCol = require("../controller/WordCollectionController");
+  var todoReadingPre = require("../controller/ReadingPreTestController")
+  var todoQuizPre = require("../controller/QuizPretestController")
 
   //Answer
   app
@@ -71,4 +73,10 @@ module.exports = function (app) {
   app.route("/suggestion").get(todoQuiz.list_Suggestion);
   app.route("/tricks").get(todoTricks.list_all_tricks);
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
+
+  app.route("/ReadingPre").get(todoReadingPre.list_all_PreRead);
+
+  app.route("/QuizPre/:reading_Pretest_id").get(todoQuizPre.list_QuizPre);
+  app.route("/QuizPre/question/:quizId").get(todoQuizPre.get_a_quiz_by_id);
+
 };
