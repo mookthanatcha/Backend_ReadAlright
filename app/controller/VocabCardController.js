@@ -10,3 +10,10 @@ exports.list_all_vocabCard = function(req,res){
         res.send(views);
     })
 }
+
+exports.list_vocabCard_by_vocabBoxID = function(req,res){
+    VocabCard.getVocabCardByVocabBoxId(req.params.vocabBoxId, function (err, reading) {
+        if (err) res.send(err);
+        res.json({ reading});
+    });
+}

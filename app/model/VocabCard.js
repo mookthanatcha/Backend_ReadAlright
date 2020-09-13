@@ -18,4 +18,20 @@ VocabCard.getAllVocabCard = function(result) {
         }
     }); 
 }
+VocabCard.getVocabCardByVocabBoxId = function (VocabId, result) {
+    sql.query(
+      "Select * from VocabCard c join VocabBox b on c.vocabBox_id = b.vocabBox_id where c.vocabBox_id = ?",
+      VocabId,
+      function (err, res) {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
+
+
 module.exports = VocabCard;      
