@@ -34,7 +34,7 @@ VocabBox.getNewVocab = function (result) {
 
   VocabBox.getVocabBoxByCateId = function (CateId, result) {
     sql.query(
-      "Select * from VocabBox b join Category c on c.category_id = b.category_id where c.category_id = ?",
+      "Select b.*,c.categoryName from VocabBox b join Category c on c.category_id = b.category_id where c.category_id = ?",
       CateId,
       function (err, res) {
         if (err) {
