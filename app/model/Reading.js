@@ -82,7 +82,7 @@ Reading.getReadingInterest = function (categoryId, result) {
 
 Reading.getReadingByReadingId = function (readingId, result) {
   sql.query(
-    "Select reading.* from reading join Category on reading.category_id = Category.category_id where reading.reading_id = ?",
+    "Select reading.*,Category.categoryName from reading join Category on reading.category_id = Category.category_id where reading.reading_id = ?",
     readingId,
     function (err, res) {
       if (err) {
