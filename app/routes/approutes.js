@@ -56,6 +56,9 @@ module.exports = function (app) {
 
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox);
+  app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
+
+
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
   app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard);

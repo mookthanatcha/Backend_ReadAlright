@@ -20,6 +20,13 @@ exports.read_a_vocab_new = function (req, res) {
   });
   };
 
+exports.list_vocabBox_by_cateID = function(req,res){
+    VocabBox.getVocabBoxByCateId(req.params.cateId, function (err, reading) {
+        if (err) res.send(err);
+        res.json({ reading});
+    });
+}
+
 // exports.create_a_views = function (req, res) {
 //     var new_views = new Views(req.body);
 
