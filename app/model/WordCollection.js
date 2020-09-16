@@ -24,17 +24,28 @@ WordCollection.createWord = function (newWord, result) {
   });
 };
 
-WordCollection.getAllWord = function (result) {
-    sql.query("Select * from WordCollection", function (err, res) {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-      } else {
-        console.log("tasks : ", res);
-  
-        result(null, res);
-      }
-    });
-  };
+WordCollection.deleteWord = function (wordEng, result) {
+  sql.query("DELETE FROM WordCollection WHERE wordCol_Eng = ?", wordEng, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
 
-  module.exports = WordCollection;
+WordCollection.getAllWord = function (result) {
+  sql.query("Select * from WordCollection", function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+    } else {
+      console.log("tasks : ", res);
+
+      result(null, res);
+    }
+  });
+};
+
+module.exports = WordCollection;

@@ -78,6 +78,7 @@ module.exports = function (app) {
   app.route("/suggestion").get(todoQuiz.list_Suggestion);
   app.route("/tricks").get(todoTricks.list_all_tricks);
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
+  app.route("/wordCol/del/:wordEng").delete(todoWordCol.delete_a_words);
 
   app.route("/ReadingPre").get(todoReadingPre.list_all_PreRead);
 

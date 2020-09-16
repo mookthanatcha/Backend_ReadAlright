@@ -7,7 +7,7 @@ exports.list_all_word = function (req, res) {
     console.log("controller");
     if (err) res.send(err);
     console.log("res", quiz);
-    res.status(200).json({ quiz }); 
+    res.status(200).json({ quiz });
   });
 };
 
@@ -18,6 +18,14 @@ exports.create_a_word = function (req, res) {
 
   Word.createWord(new_word, function (err, word) {
     if (err) res.send(err);
-    res.json( {word });
+    res.json({ word });
   });
 };
+
+exports.delete_a_words = function (req, res) {
+  Word.deleteWord(req.params.wordEng, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+
+}

@@ -3,7 +3,8 @@ var sql = require("./db.js")
 var VocabBox = function (vocabBox) {
     this.boxEngName  = vocabBox.boxEngName,
     this.boxThaiName = vocabBox.boxThaiName,
-    this.category_id = vocabBox.category_id
+    this.category_id = vocabBox.category_id,
+    this.image = vocabBox.image
 };
 
 VocabBox.getAllVocabBox = function(result) {
