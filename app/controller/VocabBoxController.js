@@ -27,6 +27,13 @@ exports.list_vocabBox_by_cateID = function(req,res){
     });
 }
 
+exports.list_MaybeYouLikeVocab = function(req,res){
+    VocabBox.getMaybeYouLikeVocab(req.params.connectType, function (err, reading) {
+        if (err) res.send(err);
+        res.json({ reading});
+    });
+}
+
 // exports.create_a_views = function (req, res) {
 //     var new_views = new Views(req.body);
 

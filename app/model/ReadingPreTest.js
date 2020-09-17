@@ -22,5 +22,19 @@ ReadingPre.getAllReadingPre = function (result) {
     });
   };
 
+ReadingPre.getReadingPreById = function (ReadingPre, result) {
+  sql.query("Select content from Reading_Pretest where reading_Pretest_id = ?", ReadingPre, function (
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 
 module.exports = ReadingPre;

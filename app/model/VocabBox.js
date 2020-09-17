@@ -47,6 +47,21 @@ VocabBox.getNewVocab = function (result) {
       }
     );
   };
+
+  VocabBox.getMaybeYouLikeVocab = function (connectType, result) {
+    sql.query(
+      "select * from VocabBox b join Category c on b.category_id = c.category_id where c.connectType = ?",
+      connectType,
+      function (err, res) {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
   
  
 module.exports = VocabBox;    

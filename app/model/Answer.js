@@ -39,7 +39,7 @@ Answer.getAnswerByQuizId = function (quizId, result) {
 };
 
 Answer.getSuggestionByUserId = function (userId, result) {
-  sql.query("select t.suggestion from Answer a join Question q on a.question_id = q.question_id join TypeOfSuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id where user_id = ? group by t.suggestion", userId, function (
+  sql.query("select t.suggestion from Answer a join Question q on a.question_id = q.question_id join Typeofsuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id where user_id = ? group by t.suggestion", userId, function (
     err,
     res
   ) {
