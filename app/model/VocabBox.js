@@ -48,10 +48,10 @@ VocabBox.getNewVocab = function (result) {
     );
   };
 
-  VocabBox.getMaybeYouLikeVocab = function (connectType, result) {
+  VocabBox.getMaybeYouLikeVocab = function (category_id, result) {
     sql.query(
-      "select * from VocabBox b join Category c on b.category_id = c.category_id where c.connectType = ?",
-      connectType,
+      "select * from VocabBox where category_id = (select category_id from Category where categoryName = (select connectType from Category  where category_id = ?));",
+      category_id,
       function (err, res) {
         if (err) {
           console.log("error: ", err);
