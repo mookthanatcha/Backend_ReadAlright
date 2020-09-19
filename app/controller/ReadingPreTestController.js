@@ -10,3 +10,10 @@ exports.list_all_PreRead = function (req, res) {
     res.status(200).json({ quiz });
   });
 };
+
+exports.getReadingPretestById = function (req, res) {
+  ReadingPre.getReadingPreById(req.params.reading_Pretest_id, function (err, quiz) {
+    res.json({ quiz });
+
+  });
+};

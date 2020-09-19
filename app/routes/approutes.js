@@ -81,9 +81,10 @@ module.exports = function (app) {
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
   app.route("/wordCol/del/:wordEng").delete(todoWordCol.delete_a_words);
 
-  app.route("/ReadingPre").get(todoReadingPre.list_all_PreRead);
+  app.route("/ReadingPre/:reading_Pretest_id").get(todoReadingPre.getReadingPretestById);
 
   app.route("/QuizPre/:reading_Pretest_id").get(todoQuizPre.list_QuizPre);
   app.route("/QuizPre/question/:quizId").get(todoQuizPre.get_a_quiz_by_id);
+  app.route("/QuizPre/question/reading/:readingId").get(todoQuizPre.get_Quiz_Pretest_by_Id);
 
 };
