@@ -23,7 +23,7 @@ ReadingPre.getAllReadingPre = function (result) {
   };
 
 ReadingPre.getReadingPreById = function (ReadingPre, result) {
-  sql.query("Select content from Reading_Pretest where reading_Pretest_id = ?", ReadingPre, function (
+  sql.query("Select * from Reading_Pretest where reading_Pretest_id = ?", ReadingPre, function (
     err,
     res
   ) {

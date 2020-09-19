@@ -34,4 +34,17 @@ QuizPretest.getQuizByQuizId = function (quizId, result) {
     }
   });
 };
+QuizPretest.getPretestIdByReadingId = function (readingId, result) {
+  sql.query("select question_pretest_id from Question_Pretest where reading_pretest_id = ?", readingId, function (
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
 module.exports = QuizPretest;
