@@ -12,6 +12,7 @@ exports.list_all_vocabCard = function(req,res){
 }
 
 exports.list_vocabCard_by_vocabBoxID = function(req,res){
+    console.log("-------------")
     VocabCard.getVocabCardByVocabBoxId(req.params.vocabBoxId, function (err, reading) {
         if (err) res.send(err);
         res.json({ reading});
