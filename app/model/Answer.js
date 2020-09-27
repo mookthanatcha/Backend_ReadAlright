@@ -39,7 +39,7 @@ Answer.getAnswerByQuizId = function (quizId, result) {
 };
 
 Answer.getSuggestionByUserId = function (userId, result) {
-  sql.query("select t.suggestion from Answer a join Question q on a.question_id = q.question_id join Typeofsuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id where user_id = ? group by t.suggestion", userId, function (
+  sql.query("select t.suggestion,t.typeOfSuggestion_id from Answer a join Question q on a.question_id = q.question_id join Typeofsuggestion t on q.typeOfSuggestion_id = t.typeOfSuggestion_id where user_id = ? group by t.suggestion", userId, function (
     err,
     res
   ) {
@@ -64,5 +64,20 @@ Answer.getAllAnswer = function (result) {
     }
   });
 };
+
+Answer.deleteSuggestion = function (suggestion, result) {
+  sql.query("DELETE FROM WordCollection WHERE wordCol_Eng = ?", wordEng, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
+
+
+
+
 
 module.exports = Answer;

@@ -12,6 +12,7 @@ module.exports = function (app) {
   var todoWordCol = require("../controller/WordCollectionController");
   var todoReadingPre = require("../controller/ReadingPreTestController")
   var todoQuizPre = require("../controller/QuizPretestController")
+  var todoSuggestion_User = require("../controller/Suggestion_UserController")
 
   //Answer
   app
@@ -22,6 +23,11 @@ module.exports = function (app) {
   app.route("/answers/quizs/:quizId").get(todoAnswer.read_a_answer_quiz_id);
   app.route("/answer/suggestions/:userId").get(todoAnswer.get_suggestion_user_id);
 
+  // Suggeston_User
+  app.route("/suggestion_user").post(todoSuggestion_User.create_a_suggestion).get(todoSuggestion_User.list_all_suggestion)
+  app.route("/suggestion_user/:suggestion").delete(todoSuggestion_User.delete_a_suggestion);
+ 
+  
 
   //Quiz
   app.route("/quizs").get(todoQuiz.list_all_quizs).post(todoQuiz.create_a_quiz);
