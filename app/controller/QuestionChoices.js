@@ -2,6 +2,14 @@
 
 var Choice = require("../model/QuestionChoices.js");
 
+exports.create_a_QChoice = function (req, res) {
+  var new_QChoice = new Choice(req.body);
+  Choice.createChoice(new_QChoice, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, quiz });
+  }); 
+};   
+
 exports.list_all_choice = function (req, res) {
   Choice.getAllChoice(function (err, choice) {
     console.log("controller");

@@ -14,6 +14,16 @@ module.exports = function (app) {
   var todoQuizPre = require("../controller/QuizPretestController")
   var todoSuggestion_User = require("../controller/Suggestion_UserController")
   var todoUser = require("../controller/UsersController");
+  var todoChoicePretest = require("../controller/ChoicePreController");
+  var todoQChoice = require("../controller/QuestionChoices");
+  var todoQPre = require("../controller/QuizPretestController");
+
+
+  app.route("/QPre").post(todoQPre.create_a_QPre)
+
+  app.route("/QChoice").post(todoQChoice.create_a_QChoice);
+
+  app.route("/ChoicePretest").post(todoChoicePretest.create_a_ChoicePretest)
 
   //User
   app.route("/user").post(todoUser.create_a_user);

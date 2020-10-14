@@ -9,6 +9,22 @@ var Choice = function (choice) {
   this.value = choice.value;
 };
 
+Choice.createChoice = function (newchoice, result) {
+  sql.query("INSERT INTO Question_Choices set ?", newchoice, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      console.log("eiei");
+      console.log(res.message);
+      console.log(res.insertId);
+      result(null, res.insertId, res.message);
+    }
+  });
+};
+
 Choice.getAllChoice = function (result) {
   sql.query("Select * from Question_Choices", function (err, res) {
     if (err) {

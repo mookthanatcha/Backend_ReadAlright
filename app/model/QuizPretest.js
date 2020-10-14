@@ -7,6 +7,22 @@ var QuizPretest = function (quizPretest) {
   this.reading_Pretest_id = quizPretest.reading_Pretest_id;
 };
 
+QuizPretest.createQPre = function (newQPre, result) {
+  sql.query("INSERT INTO Question_Pretest set ?", newQPre, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      console.log("eiei");
+      console.log(res.message);
+      console.log(res.insertId);
+      result(null, res.insertId, res.message);
+    }
+  });
+};
+
 QuizPretest.getQuizPre = function (readingId, result) {
   sql.query("Select reading_Pretest_id from Question_Pretest where reading_Pretest_id = ?", readingId, function (
     err,
