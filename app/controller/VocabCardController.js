@@ -1,6 +1,15 @@
 "use strict";
 
+const { createVocab } = require("../model/VocabCard");
 var VocabCard = require("../model/VocabCard");
+
+exports.create_a_vocabCard = function (req, res) {
+    var new_vocab = new VocabCard(req.body);
+    VocabCard.createVocabCard(new_vocab, function (err, quiz) {
+      if (err) res.send(err);
+      res.json({ error: "Invalid input", msg: res.message, quiz });
+    }); 
+  };
 
 exports.list_all_vocabCard = function(req,res){
     VocabCard.getAllVocabCard(function(err, views){

@@ -2,6 +2,17 @@
 
 var Category = require("../model/Category");
 
+exports.create_a_cate = function (req, res) {
+    var new_cate = new Category(req.body);
+  
+    //handles null error
+  
+    Category.createCate(new_cate, function (err, word) {
+      if (err) res.send(err);
+      res.json({ word });
+    });
+  };
+
 exports.list_all_category = function (req, res) {
     Category.getAllCategory(function (err, category) {
         console.log("controller");

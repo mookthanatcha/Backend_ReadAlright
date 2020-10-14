@@ -7,6 +7,22 @@ var VocabBox = function (vocabBox) {
     this.image = vocabBox.image
 };
 
+VocabBox.createVocab = function (newVocab, result) {
+  sql.query("INSERT INTO VocabBox set ?", newVocab, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      console.log("eiei");
+      console.log(res.message);
+      console.log(res.insertId);
+      result(null, res.insertId, res.message);
+    }
+  });
+};
+
 VocabBox.getAllVocabBox = function(result) {
     sql.query("Select * from VocabBox", function(err,res){
         if (err) {

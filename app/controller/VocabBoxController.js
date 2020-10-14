@@ -2,6 +2,14 @@
 
 var VocabBox = require("../model/VocabBox");
 
+exports.create_a_vocab = function (req, res) {
+    var new_vocab = new VocabBox(req.body);
+    VocabBox.createVocab(new_vocab, function (err, quiz) {
+      if (err) res.send(err);
+      res.json({ error: "Invalid input", msg: res.message, quiz });
+    }); 
+  };   
+
 exports.list_all_vocabBox = function(req,res){
     VocabBox.getAllVocabBox(function(err, views){
         console.log("controller");

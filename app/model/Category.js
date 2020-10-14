@@ -8,6 +8,22 @@ var Category = function (category) {
     this.image = category.image
 };
 
+Category.createCate = function (newCate, result) {
+    sql.query("INSERT INTO Category set ?", newCate, function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        res.message = "Okay";
+        console.log(res);
+        // console.log("eiei");
+        console.log(res.message);
+        console.log(res.insertId);
+        result(null, res.insertId, res.message);
+      }
+    });
+  };
+
 Category.getAllCategory = function (result) {
     sql.query("Select * from Category", function (err, res) {
         if (err) {

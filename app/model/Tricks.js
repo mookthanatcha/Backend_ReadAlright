@@ -2,9 +2,24 @@
 var sql = require("./db.js");
 
 var Tricks = function(trick) {
-  this.Tricks_id = trick.Tricks_id;
   this.Trick_Title = trick.Trick_Title;
   this.Trick_Detail = trick.Trick_Detail;
+};
+
+Tricks.createTrick = function (newTrick, result) {
+  sql.query("INSERT INTO Tricks set ?", newTrick, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      console.log("eiei");
+      console.log(res.message);
+      console.log(res.insertId);
+      result(null, res.insertId, res.message);
+    }
+  });
 };
 
 Tricks.getAllTricks = function(result) {

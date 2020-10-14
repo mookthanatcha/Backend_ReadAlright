@@ -60,19 +60,19 @@ module.exports = function (app) {
     .route("/reading/interest/:categoryId")
     .get(todoReading.read_a_reading_interest);
   //Category
-  app.route("/categorys").get(todoCategory.list_all_category);
+  app.route("/categorys").get(todoCategory.list_all_category).post(todoCategory.create_a_cate);
   app.route("/categorys/reading").get(todoCategory.list_read_category);
   app.route("/categorys/vocab").get(todoCategory.list_vocab_category);
 
   //Vocab
-  app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox);
+  app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox).post(todoVocabBox.create_a_vocab);
   app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
 
 
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
-  app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard);
+  app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard).post(todoVocabCard.create_a_vocabCard);
   app.route("/vocabCard/:vocabBoxId").get(todoVocabCard.list_vocabCard_by_vocabBoxID)
 
   //others 
@@ -87,7 +87,7 @@ module.exports = function (app) {
 
   // app.route("/pretest").get(todoQuiz.list_Pretest);
   app.route("/suggestion").get(todoQuiz.list_Suggestion);
-  app.route("/tricks").get(todoTricks.list_all_tricks);
+  app.route("/tricks").get(todoTricks.list_all_tricks).post(todoTricks.create_a_trick);
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
   app.route("/wordCol/del/:wordEng").delete(todoWordCol.delete_a_words);
 

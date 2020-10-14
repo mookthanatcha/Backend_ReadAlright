@@ -5,7 +5,7 @@ var Reading = function (reading) {
     (this.content = reading.content),
     (this.image = reading.image),
     (this.category_id = reading.category_id),
-    (this.isActive = reading.isActive);
+    (this.level_reading = reading.level_reading);
 };
 
 Reading.getAllReading = function (result) {
