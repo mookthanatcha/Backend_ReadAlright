@@ -13,6 +13,10 @@ module.exports = function (app) {
   var todoReadingPre = require("../controller/ReadingPreTestController")
   var todoQuizPre = require("../controller/QuizPretestController")
   var todoSuggestion_User = require("../controller/Suggestion_UserController")
+  var todoUser = require("../controller/UsersController");
+
+  //User
+  app.route("/user").post(todoUser.create_a_user);
 
   //Answer
   app
