@@ -11,6 +11,13 @@ exports.list_all_Reading = function (req, res) {
     });
 };
 
+exports.delete_a_reading = function (req, res) {
+  Reading.deleteReading(req.params.reading_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 exports.read_a_reading_category_id = function (req, res) {
     Reading.getReadingByCategoryId(req.params.userId, function (err, reading) {
         if (err) res.send(err);

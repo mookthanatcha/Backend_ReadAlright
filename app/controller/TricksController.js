@@ -10,6 +10,13 @@ exports.create_a_trick = function (req, res) {
   }); 
 };   
 
+exports.delete_a_tricks = function (req, res) {
+  Tricks.deleteTrick(req.params.tricks_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 exports.list_all_tricks = function (req, res) {
   Tricks.getAllTricks(function (err, quiz) {
     console.log("controller");

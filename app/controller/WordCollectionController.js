@@ -27,5 +27,4 @@ exports.delete_a_words = function (req, res) {
     if (err) res.send(err);
     res.json({ wordCol });
   });
-
 }

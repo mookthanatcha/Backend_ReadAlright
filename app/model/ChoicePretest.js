@@ -25,6 +25,17 @@ ChoicePre.createChoicePre = function (newChoicePre, result) {
   });
 };
 
+ChoicePre.deleteChoicePre = function (choices_id, result) {
+  sql.query("DELETE FROM Choices_TF WHERE choices_id = ?", choices_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
+
 ChoicePre.getQuizByQuizId = function (quizId, result) {
     sql.query(
       "Select * from Choices_TF where Question_Pretest_id = ?",

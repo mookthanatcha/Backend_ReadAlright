@@ -10,6 +10,13 @@ exports.create_a_QChoice = function (req, res) {
   }); 
 };   
 
+exports.delete_a_choice = function (req, res) {
+  Choice.deleteChoice(req.params.choice_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 exports.list_all_choice = function (req, res) {
   Choice.getAllChoice(function (err, choice) {
     console.log("controller");

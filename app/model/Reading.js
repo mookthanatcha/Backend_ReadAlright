@@ -36,6 +36,17 @@ Reading.createReading = function (newRead, result) {
   });
 };
 
+Reading.deleteReading = function (reading_id, result) {
+  sql.query("DELETE FROM reading WHERE reading_id = ?", reading_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
+
 // Reading.getReadingByCategoryId = function (categoryId, result) {
 //     sql.query("Select * from reading where category_id = ?", categoryId, function (
 //         err,

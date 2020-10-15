@@ -13,6 +13,13 @@ exports.create_a_cate = function (req, res) {
     });
   };
 
+  exports.delete_a_Cate = function (req, res) {
+    Category.deleteCate(req.params.category_id, function (err, wordCol) {
+      if (err) res.send(err);
+      res.json({ wordCol });
+    });
+  }
+
 exports.list_all_category = function (req, res) {
     Category.getAllCategory(function (err, category) {
         console.log("controller");

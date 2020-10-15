@@ -22,6 +22,17 @@ Tricks.createTrick = function (newTrick, result) {
   });
 };
 
+Tricks.deleteTrick = function (tricks_id, result) {
+  sql.query("DELETE FROM Tricks WHERE tricks_id = ?", tricks_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
+
 Tricks.getAllTricks = function(result) {
     sql.query("Select * from Tricks", function(err, res) {
       if (err) {

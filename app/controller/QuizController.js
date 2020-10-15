@@ -23,6 +23,13 @@ exports.create_a_quiz = function (req, res) {
   });
 };
 
+exports.delete_a_Quiz = function (req, res) {
+  Quiz.deleteQuiz(req.params.question_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 
 
 

@@ -23,6 +23,17 @@ QuizPretest.createQPre = function (newQPre, result) {
   });
 };
 
+QuizPretest.deleteQPre = function (question_pretest_id, result) {
+  sql.query("DELETE FROM Question_Pretest WHERE question_pretest_id = ?", question_pretest_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
+    }
+  });
+};
+
 QuizPretest.getQuizPre = function (readingId, result) {
   sql.query("Select reading_Pretest_id from Question_Pretest where reading_Pretest_id = ?", readingId, function (
     err,

@@ -36,6 +36,17 @@ Category.getAllCategory = function (result) {
     }) 
 }; 
 
+Category.deleteCate = function (category_id, result) {
+    sql.query("DELETE FROM Category WHERE category_id = ?", category_id, function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res.res);
+      }
+    });
+  };
+
 Category.getReadCategory = function (result) {
     sql.query("SELECT * FROM Category where typeName = 'Reading'", function (err, res) {
         if (err) {
