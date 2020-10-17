@@ -6,6 +6,8 @@ var Quiz = function (quiz) {
   this.typeOfSuggestion_id = quiz.typeOfSuggestion_id;
   this.reading_id = quiz.reading_id;
   this.typeOfQuestion = quiz.typeOfQuestion;
+  this.level = quiz.level;
+
 };
 
 Quiz.createQuiz = function (newQuiz, result) {
@@ -20,6 +22,17 @@ Quiz.createQuiz = function (newQuiz, result) {
       console.log(res.message);
       console.log(res.insertId);
       result(null, res.insertId, res.message);
+    }
+  });
+};
+
+Quiz.deleteQuiz = function (question_id, result) {
+  sql.query("DELETE FROM Question WHERE question_id = ?", question_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
     }
   });
 };

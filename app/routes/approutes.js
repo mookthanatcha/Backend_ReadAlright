@@ -14,6 +14,21 @@ module.exports = function (app) {
   var todoQuizPre = require("../controller/QuizPretestController")
   var todoSuggestion_User = require("../controller/Suggestion_UserController")
   var todoUser = require("../controller/UsersController");
+  var todoChoicePretest = require("../controller/ChoicePreController");
+  var todoQChoice = require("../controller/QuestionChoices");
+  var todoQPre = require("../controller/QuizPretestController");
+
+
+  app.route("/QPre").post(todoQPre.create_a_QPre)
+
+  app.route("/QChoice").post(todoQChoice.create_a_QChoice);
+  app.route("/admin/deleteChoice/:choice_id").delete(todoQChoice.delete_a_choice);
+
+
+
+  app.route("/ChoicePretest").post(todoChoicePretest.create_a_ChoicePretest)
+  app.route("/admin/deleteChoicePre/:choices_id").delete(todoChoicePretest.delete_a_choicePre);
+
 
   //User
   app.route("/user").post(todoUser.create_a_user);
@@ -38,6 +53,9 @@ module.exports = function (app) {
   app.route("/quiz/:quizId").get(todoQuiz.get_a_quiz_by_id);
   app.route("/quiz/type/:type/:reading_id").get(todoQuiz.get_a_quiz_by_type);
   app.route("/quizInContent/:reading_id").get(todoQuiz.listChalengeInContent)
+  app.route("/admin/deleteQuiz/:question_id").delete(todoQuiz.delete_a_Quiz);
+
+
 
   //Choice 
   app.route("/choice/:quizId").get(todoChoice.get_a_choice_by_question_id);
@@ -47,33 +65,31 @@ module.exports = function (app) {
 
   //Reading
 
-  app
-    .route("/reading")
-    .get(todoReading.list_all_Reading)
-    .post(todoReading.create_a_reading);
-  app
-    .route("/reading/user/:userId")
-    .get(todoReading.read_a_reading_category_id);
+  app.route("/reading").get(todoReading.list_all_Reading).post(todoReading.create_a_reading);
+  app.route("/reading/user/:userId").get(todoReading.read_a_reading_category_id);
   app.route("/reading/readingId/:readingId").get(todoReading.read_a_reading_id);
   app.route("/newReading").get(todoReading.read_a_reading_new);
-  app
-    .route("/reading/interest/:categoryId")
-    .get(todoReading.read_a_reading_interest);
+  app.route("/reading/interest/:categoryId").get(todoReading.read_a_reading_interest);
+  app.route("/admin/deleteReading/:reading_id").delete(todoReading.delete_a_reading);
+
   //Category
-  app.route("/categorys").get(todoCategory.list_all_category);
+  app.route("/categorys").get(todoCategory.list_all_category).post(todoCategory.create_a_cate);
   app.route("/categorys/reading").get(todoCategory.list_read_category);
   app.route("/categorys/vocab").get(todoCategory.list_vocab_category);
+  app.route("/admin/deleteCate/:category_id").delete(todoCategory.delete_a_Cate);
 
   //Vocab
-  app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox);
+  app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox).post(todoVocabBox.create_a_vocab);
   app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
+  app.route("/admin/deleteVocabBox/:vocabBox_id").delete(todoVocabBox.delete_a_VocabBox);
 
 
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
-  app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard);
+  app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard).post(todoVocabCard.create_a_vocabCard);
   app.route("/vocabCard/:vocabBoxId").get(todoVocabCard.list_vocabCard_by_vocabBoxID)
+  app.route("/admin/deleteVocabCard/:vocabCard_id").delete(todoVocabCard.delete_a_VocabCard);
 
   //others 
   app
@@ -87,7 +103,10 @@ module.exports = function (app) {
 
   // app.route("/pretest").get(todoQuiz.list_Pretest);
   app.route("/suggestion").get(todoQuiz.list_Suggestion);
-  app.route("/tricks").get(todoTricks.list_all_tricks);
+  app.route("/tricks").get(todoTricks.list_all_tricks).post(todoTricks.create_a_trick);
+  app.route("/admin/deleteTrick/:tricks_id").delete(todoTricks.delete_a_tricks);
+
+
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
   app.route("/wordCol/del/:wordEng").delete(todoWordCol.delete_a_words);
 
@@ -96,5 +115,7 @@ module.exports = function (app) {
   app.route("/QuizPre/:reading_Pretest_id").get(todoQuizPre.list_QuizPre);
   app.route("/QuizPre/question/:quizId").get(todoQuizPre.get_a_quiz_by_id);
   app.route("/QuizPre/question/reading/:readingId").get(todoQuizPre.get_Quiz_Pretest_by_Id);
+  app.route("/admin/deleteQPre/:question_pretest_id").delete(todoQPre.delete_a_QPre);
+
 
 };

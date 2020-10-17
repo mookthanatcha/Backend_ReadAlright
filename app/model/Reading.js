@@ -5,7 +5,7 @@ var Reading = function (reading) {
     (this.content = reading.content),
     (this.image = reading.image),
     (this.category_id = reading.category_id),
-    (this.isActive = reading.isActive);
+    (this.level_reading = reading.level_reading);
 };
 
 Reading.getAllReading = function (result) {
@@ -32,6 +32,17 @@ Reading.createReading = function (newRead, result) {
       console.log(res.message);
       console.log(res.insertId);
       result(null, res.insertId, res.message);
+    }
+  });
+};
+
+Reading.deleteReading = function (reading_id, result) {
+  sql.query("DELETE FROM reading WHERE reading_id = ?", reading_id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res.res);
     }
   });
 };

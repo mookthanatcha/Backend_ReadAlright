@@ -2,6 +2,21 @@
 
 var Choice = require("../model/QuestionChoices.js");
 
+exports.create_a_QChoice = function (req, res) {
+  var new_QChoice = new Choice(req.body);
+  Choice.createChoice(new_QChoice, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, quiz });
+  }); 
+};   
+
+exports.delete_a_choice = function (req, res) {
+  Choice.deleteChoice(req.params.choice_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 exports.list_all_choice = function (req, res) {
   Choice.getAllChoice(function (err, choice) {
     console.log("controller");

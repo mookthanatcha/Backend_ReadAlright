@@ -5,6 +5,21 @@ const ChoicePre = require("../model/ChoicePretest");
 const QuizPretest = require("../model/QuizPretest");
 const ReadingPre = require("../model/ReadingPreTest");
 
+exports.create_a_QPre = function (req, res) {
+  var new_QPre = new QuizPre(req.body);
+  QuizPre.createQPre(new_QPre, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, quiz });
+  }); 
+};   
+
+exports.delete_a_QPre = function (req, res) {
+  QuizPre.deleteQPre(req.params.question_pretest_id, function (err, wordCol) {
+    if (err) res.send(err);
+    res.json({ wordCol });
+  });
+}
+
 exports.list_QuizPre = function (req, res) {
   QuizPre.getQuizPre(req.params.reading_Pretest_id, function (err, quiz) {
     res.json({ quiz });
