@@ -104,6 +104,7 @@ module.exports = function (app) {
   // app.route("/pretest").get(todoQuiz.list_Pretest);
   app.route("/suggestion").get(todoQuiz.list_Suggestion);
   app.route("/tricks").get(todoTricks.list_all_tricks).post(todoTricks.create_a_trick);
+  app.route("/getTricksByTrickID/:tricks_id").get(todoTricks.getTricks_by_TrickID);
   app.route("/admin/deleteTrick/:tricks_id").delete(todoTricks.delete_a_tricks);
 
 

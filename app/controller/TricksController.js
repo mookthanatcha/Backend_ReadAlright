@@ -25,3 +25,10 @@ exports.list_all_tricks = function (req, res) {
     res.status(200).json({ quiz });
   });
 };
+
+exports.getTricks_by_TrickID = function (req, res) {
+  Tricks.getTricksByTrickID(req.params.tricks_id, function (err, quiz) {
+    res.json({ quiz });
+
+  });
+};

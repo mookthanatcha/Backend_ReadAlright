@@ -45,5 +45,19 @@ Tricks.getAllTricks = function(result) {
       }
     });
   };
+
+  Tricks.getTricksByTrickID = function (trickId, result) {
+    sql.query("Select * from Tricks where tricks_id = ?", trickId, function (
+      err,
+      res
+    ) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    });
+  };
   
   module.exports = Tricks;
