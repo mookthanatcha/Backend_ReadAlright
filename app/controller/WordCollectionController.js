@@ -28,3 +28,10 @@ exports.delete_a_words = function (req, res) {
     res.json({ wordCol });
   });
 }
+
+exports.get_WordByUserId = function (req, res) {
+  Word.getWordByUserId(req.params.userId, function (err, word) {
+    if (err) res.send(err);
+    res.json({ word });
+  });
+}

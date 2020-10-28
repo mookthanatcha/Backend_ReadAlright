@@ -48,4 +48,18 @@ WordCollection.getAllWord = function (result) {
   });
 };
 
+WordCollection.getWordByUserId = function (userId, result) {
+  sql.query(
+    "Select * from WordCollection where user_id = ?",
+    userId,
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
 module.exports = WordCollection;

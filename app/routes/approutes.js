@@ -32,7 +32,7 @@ module.exports = function (app) {
 
   //User
   app.route("/user").post(todoUser.create_a_user);
-
+  app.route("/user/:uuId").get(todoUser.get_UserByUuid);
   //Answer
   app
     .route("/answers")
@@ -45,8 +45,8 @@ module.exports = function (app) {
   // Suggeston_User
   app.route("/suggestion_user").post(todoSuggestion_User.create_a_suggestion).get(todoSuggestion_User.list_all_suggestion)
   app.route("/suggestion_user/:suggestion").delete(todoSuggestion_User.delete_a_suggestion);
- 
-  
+
+
 
   //Quiz
   app.route("/quizs").get(todoQuiz.list_all_quizs).post(todoQuiz.create_a_quiz);
@@ -110,6 +110,7 @@ module.exports = function (app) {
 
   app.route("/wordCol").get(todoWordCol.list_all_word).post(todoWordCol.create_a_word);
   app.route("/wordCol/del/:wordEng").delete(todoWordCol.delete_a_words);
+  app.route("/wordCol/:userId").get(todoWordCol.get_WordByUserId);
 
   app.route("/ReadingPre/:reading_Pretest_id").get(todoReadingPre.getReadingPretestById);
 
