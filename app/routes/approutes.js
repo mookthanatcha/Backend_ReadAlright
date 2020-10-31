@@ -59,7 +59,7 @@ module.exports = function (app) {
 
   //Choice 
   app.route("/choice/:quizId").get(todoChoice.get_a_choice_by_question_id);
-  app.route("/choice").get(todoChoice.list_all_choice);
+  app.route("/choice").get(todoChoice.list_all_choice).post(todoChoice.create_a_QChoice);
   app.route("/correctChoices").get(todoChoice.list_correct_choice);
 
 

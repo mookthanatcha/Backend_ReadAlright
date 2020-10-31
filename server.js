@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "http://192.168.1.56:19006");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
 
   // Request methods you wish to allow
   res.setHeader(
