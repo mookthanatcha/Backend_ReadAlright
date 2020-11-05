@@ -9,7 +9,7 @@ var Reading = function (reading) {
 };
 
 Reading.getAllReading = function (result) {
-  sql.query("Select * from reading", function (err, res) {
+  sql.query("Select * from reading r join Category c on c.category_id = r.category_id", function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);

@@ -5,6 +5,21 @@ var Suggestion_User = function (suggestion_User) {
   this.typeOfSuggestion_id = suggestion_User.typeOfSuggestion_id;
   this.user_id = suggestion_User.user_id;
 };
+
+Suggestion_User.getSugByUserId = function (userId, result) {
+  sql.query(
+    "Select * from WordCollection where user_id = ?",
+    userId,
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
  
 Suggestion_User.createSuggestion = function (newSuggestion, result) {
     sql.query("INSERT INTO Suggestion_User set ?", newSuggestion, function (err, res) {

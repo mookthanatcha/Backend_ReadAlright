@@ -46,6 +46,18 @@ VocabBox.getAllVocabBox = function(result) {
     });
 }
 
+VocabBox.getAllVocabBoxAndCate = function(result) {
+  sql.query("Select * from VocabBox b join Category c on b.category_id = c.category_id", function(err,res){
+      if (err) {
+          console.log("error: ", err);
+          result(null, err);
+      } else {
+          console.log("Reading : ", res);
+          result(null, res);
+      }
+  });
+}
+
 VocabBox.getNewVocab = function (result) {
     sql.query(
       "SELECT * FROM VocabBox b join VocabCard c on b.vocabBox_id = c.vocabBox_id GROUP BY b.boxEngName order by c.vocabBox_id DESC LIMIT 5;",

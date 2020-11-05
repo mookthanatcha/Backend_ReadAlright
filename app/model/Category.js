@@ -36,6 +36,18 @@ Category.getAllCategory = function (result) {
     }) 
 }; 
 
+// Category.getCateInAdmin = function (result) {
+//   sql.query("select * from Category c join reading r on c.category_id = r.category_id", function (err, res) {
+//       if (err) {
+//           console.log("error: ", err);
+//           result(null, err)
+//       } else {
+//           console.log("answer: ", res);
+//           result(null, res) 
+//       }
+//   }) 
+// }; 
+
 Category.deleteCate = function (category_id, result) {
     sql.query("DELETE FROM Category WHERE category_id = ?", category_id, function (err, res) {
       if (err) {

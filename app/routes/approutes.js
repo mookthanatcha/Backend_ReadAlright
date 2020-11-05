@@ -77,12 +77,14 @@ module.exports = function (app) {
   app.route("/categorys/reading").get(todoCategory.list_read_category);
   app.route("/categorys/vocab").get(todoCategory.list_vocab_category);
   app.route("/admin/deleteCate/:category_id").delete(todoCategory.delete_a_Cate);
+  // app.route("/categorys/admin").get(todoCategory.get_Cate_InAdmin);
 
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox).post(todoVocabBox.create_a_vocab);
   app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
   app.route("/admin/deleteVocabBox/:vocabBox_id").delete(todoVocabBox.delete_a_VocabBox);
+  app.route("/vocabBoxAndCate").get(todoVocabBox.get_AllVocabBoxAndCate);
 
 
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);

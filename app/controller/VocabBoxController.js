@@ -26,6 +26,15 @@ exports.list_all_vocabBox = function (req, res) {
     })
 }
 
+exports.get_AllVocabBoxAndCate= function (req, res) {
+    VocabBox.getAllVocabBoxAndCate(function (err, views) {
+        console.log("controller");
+        if (err) res.send(err);
+        console.log("res", views);
+        res.send(views);
+    })
+}
+
 exports.read_a_vocab_new = function (req, res) {
     VocabBox.getNewVocab(function (err, answer) {
         console.log("controller");

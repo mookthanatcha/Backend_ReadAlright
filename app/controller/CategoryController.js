@@ -29,6 +29,15 @@ exports.list_all_category = function (req, res) {
     });
 };
 
+// exports.get_Cate_InAdmin= function (req, res) {
+//   Category.getCateInAdmin(function (err, category) {
+//       console.log("controller");
+//       if (err) res.send(err);
+//       console.log("res", category);
+//       res.send(category);
+//   });
+// };
+
 exports.list_read_category = function (req, res) {
     Category.getReadCategory(function (err, category) {
         console.log("controller");
