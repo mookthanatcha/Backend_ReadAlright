@@ -34,6 +34,19 @@ VocabCard.deleteVocabCard = function (vocabCard_id, result) {
   });
 };
 
+VocabCard.updateVocabCard = function (newVocabCard, vocabCardId, result) {
+  sql.query("UPDATE VocabCard set ? where vocabCard_id = " + vocabCardId, newVocabCard, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
+
 VocabCard.getAllVocabCard = function(result) {
     sql.query("Select * from VocabCard", function(err,res){
         if (err) {

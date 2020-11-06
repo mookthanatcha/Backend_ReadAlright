@@ -92,6 +92,7 @@ module.exports = function (app) {
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
   app.route("/vocabCard").get(todoVocabCard.list_all_vocabCard).post(todoVocabCard.create_a_vocabCard);
+  app.route("/vocabCard/:vocabCardId").put(todoVocabCard.update_a_vocab_card);
   app.route("/vocabCard/:vocabBoxId").get(todoVocabCard.list_vocabCard_by_vocabBoxID)
   app.route("/admin/deleteVocabCard/:vocabCard_id").delete(todoVocabCard.delete_a_VocabCard);
 

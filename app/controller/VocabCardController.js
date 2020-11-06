@@ -18,6 +18,14 @@ exports.delete_a_VocabCard = function (req, res) {
     });
 }
 
+exports.update_a_vocab_card = function (req, res) {
+    var new_vocabCard = new VocabCard(req.body);
+    VocabCard.updateVocabCard(new_vocabCard, req.params.vocabCardId, function (err, quiz) {
+        if (err) res.send(err);
+        res.json({ error: "Invalid input", msg: res.message, quiz });
+    });
+};
+
 exports.list_all_vocabCard = function (req, res) {
     VocabCard.getAllVocabCard(function (err, views) {
         console.log("controller");
