@@ -67,6 +67,7 @@ module.exports = function (app) {
 
   app.route("/reading").get(todoReading.list_all_Reading).post(todoReading.create_a_reading);
   app.route("/reading/user/:userId").get(todoReading.read_a_reading_category_id);
+  app.route("/reading/:readingId").put(todoReading.update_a_reading);
   app.route("/reading/readingId/:readingId").get(todoReading.read_a_reading_id);
   app.route("/newReading").get(todoReading.read_a_reading_new);
   app.route("/reading/interest/:categoryId").get(todoReading.read_a_reading_interest);
@@ -81,6 +82,7 @@ module.exports = function (app) {
 
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox).post(todoVocabBox.create_a_vocab);
+  app.route("/vocabBox/:vocabBoxId").put(todoVocabBox.update_a_vocab_box);
   app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
   app.route("/admin/deleteVocabBox/:vocabBox_id").delete(todoVocabBox.delete_a_VocabBox);

@@ -26,7 +26,15 @@ exports.list_all_vocabBox = function (req, res) {
     })
 }
 
-exports.get_AllVocabBoxAndCate= function (req, res) {
+exports.update_a_vocab_box = function (req, res) {
+    var new_vocab = new VocabBox(req.body);
+    VocabBox.updateVocabBox(new_vocab, req.params.vocabBoxId, function (err, quiz) {
+        if (err) res.send(err);
+        res.json({ error: "Invalid input", msg: res.message, quiz });
+    });
+};
+
+exports.get_AllVocabBoxAndCate = function (req, res) {
     VocabBox.getAllVocabBoxAndCate(function (err, views) {
         console.log("controller");
         if (err) res.send(err);

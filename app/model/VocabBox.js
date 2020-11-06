@@ -22,6 +22,18 @@ VocabBox.createVocab = function (newVocab, result) {
     }
   });
 };
+VocabBox.updateVocabBox = function (newVocab, vocabBoxId, result) {
+  sql.query("UPDATE VocabBox set ? where vocabBox_id = " + vocabBoxId, newVocab, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
 
 VocabBox.deleteVocabBox = function (vocabBox_id, result) {
   sql.query("DELETE FROM VocabBox WHERE vocabBox_id = ?", vocabBox_id, function (err, res) {

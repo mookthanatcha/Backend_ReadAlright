@@ -36,6 +36,20 @@ Reading.createReading = function (newRead, result) {
   });
 };
 
+
+Reading.updateReading = function (newRead, readingId, result) {
+  sql.query("UPDATE reading set ? where reading_id = " + readingId, newRead, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
+
 Reading.deleteReading = function (reading_id, result) {
   sql.query("DELETE FROM reading WHERE reading_id = ?", reading_id, function (err, res) {
     if (err) {
