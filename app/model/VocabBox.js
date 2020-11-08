@@ -113,6 +113,21 @@ VocabBox.getNewVocab = function (result) {
       }
     );
   };
+
+  VocabBox.getVocabByVocabBoxId = function (vocabBoxId, result) {
+    sql.query(
+      "Select VocabBox.*,Category.* from VocabBox join Category on VocabBox.category_id = Category.category_id where VocabBox.vocabBox_id = ?",
+      vocabBoxId,
+      function (err, res) {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
   
  
 module.exports = VocabBox;    

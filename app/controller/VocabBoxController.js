@@ -17,6 +17,13 @@ exports.delete_a_VocabBox = function (req, res) {
     });
 }
 
+exports.vocabBox_a_vocabBox_id = function (req, res) {
+    VocabBox.getVocabByVocabBoxId(req.params.vocabBoxId, function (err, reading) {
+      if (err) res.send(err);
+      res.json({ reading });
+    });
+  };
+
 exports.list_all_vocabBox = function (req, res) {
     VocabBox.getAllVocabBox(function (err, views) {
         console.log("controller");

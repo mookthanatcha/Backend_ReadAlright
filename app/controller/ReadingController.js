@@ -54,6 +54,7 @@ exports.read_a_reading_id = function (req, res) {
   });
 };
 
+
 exports.read_a_reading_new = function (req, res) {
   Reading.getNewReading(function (err, answer) {
     console.log("controller");

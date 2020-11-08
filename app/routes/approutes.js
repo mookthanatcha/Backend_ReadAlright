@@ -82,7 +82,7 @@ module.exports = function (app) {
 
   //Vocab
   app.route("/vocabBox").get(todoVocabBox.list_all_vocabBox).post(todoVocabBox.create_a_vocab);
-  app.route("/vocabBox/:vocabBoxId").put(todoVocabBox.update_a_vocab_box);
+  app.route("/vocabBox/:vocabBoxId").put(todoVocabBox.update_a_vocab_box).get(todoVocabBox.vocabBox_a_vocabBox_id);
   app.route("/vocabBox/:cateId").get(todoVocabBox.list_vocabBox_by_cateID);
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
   app.route("/admin/deleteVocabBox/:vocabBox_id").delete(todoVocabBox.delete_a_VocabBox);
