@@ -72,6 +72,7 @@ module.exports = function (app) {
   app.route("/newReading").get(todoReading.read_a_reading_new);
   app.route("/reading/interest/:categoryId").get(todoReading.read_a_reading_interest);
   app.route("/admin/deleteReading/:reading_id").delete(todoReading.delete_a_reading);
+  app.route("/reading/last").get(todoReading.get_reading_last);
 
   //Category
   app.route("/categorys").get(todoCategory.list_all_category).post(todoCategory.create_a_cate);

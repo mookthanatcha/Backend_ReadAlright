@@ -120,6 +120,20 @@ Reading.getReadingByReadingId = function (readingId, result) {
   );
 };
 
+Reading.getReadingLast = function (result) {
+  sql.query(
+    "SELECT reading_id FROM reading ORDER BY reading_id DESC LIMIT 1",
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
+
 Reading.getNewReading = function (result) {
   sql.query(
     "SELECT * FROM reading ORDER BY reading_id DESC LIMIT 5;",

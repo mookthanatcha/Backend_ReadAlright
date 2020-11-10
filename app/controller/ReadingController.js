@@ -25,6 +25,13 @@ exports.read_a_reading_category_id = function (req, res) {
   });
 };
 
+exports.get_reading_last = function (req, res) {
+  Reading.getReadingLast(function (err, reading) {
+    if (err) res.send(err);
+    res.json({ reading });
+  });
+};
+
 exports.read_a_reading_interest = function (req, res) {
   Reading.getReadingInterest(req.params.categoryId, function (err, reading) {
     if (err) res.send(err);
