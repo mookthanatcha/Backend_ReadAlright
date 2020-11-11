@@ -116,7 +116,7 @@ VocabBox.getNewVocab = function (result) {
 
   VocabBox.getVocabByVocabBoxId = function (vocabBoxId, result) {
     sql.query(
-      "Select VocabBox.*,Category.* from VocabBox join Category on VocabBox.category_id = Category.category_id where VocabBox.vocabBox_id = ?",
+      "Select VocabBox.*,Category.*,VocabCard.* from VocabBox join Category on VocabBox.category_id = Category.category_id join VocabCard on VocabBox.vocabBox_id = VocabCard.vocabBox_id where VocabBox.vocabBox_id = ?",
       vocabBoxId,
       function (err, res) {
         if (err) {
