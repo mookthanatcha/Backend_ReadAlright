@@ -66,6 +66,14 @@ exports.list_vocabBox_by_cateID = function (req, res) {
     });
 }
 
+
+exports.list_vocabBox_by_vocabBoxId2 = function (req, res) {
+    VocabBox.getVocabBoxByVocabBoxId2(req.params.vocabBoxId, function (err, reading) {
+        if (err) res.send(err);
+        res.json({ reading });
+    });
+}
+
 exports.list_MaybeYouLikeVocab = function (req, res) {
     VocabBox.getMaybeYouLikeVocab(req.params.category_id, function (err, reading) {
         if (err) res.send(err);

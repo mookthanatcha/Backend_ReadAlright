@@ -99,6 +99,21 @@ VocabBox.getNewVocab = function (result) {
     );
   };
 
+  VocabBox.getVocabBoxByVocabBoxId2 = function (vocabBoxId, result) {
+    sql.query(
+      "SELECT * FROM VocabBox b join VocabCard c on b.vocabBox_id = c.vocabBox_id where b.vocabBox_id = ?",
+      vocabBoxId,
+      function (err, res) {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
+
   VocabBox.getMaybeYouLikeVocab = function (category_id, result) {
     sql.query(
       "select * from VocabBox where category_id = (select category_id from Category where categoryName = (select connectType from Category  where category_id = ?));",

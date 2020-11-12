@@ -72,6 +72,7 @@ module.exports = function (app) {
   app.route("/newReading").get(todoReading.read_a_reading_new);
   app.route("/reading/interest/:categoryId").get(todoReading.read_a_reading_interest);
   app.route("/admin/deleteReading/:reading_id").delete(todoReading.delete_a_reading);
+
   app.route("/reading/last").get(todoReading.get_reading_last);
 
   //Category
@@ -88,7 +89,7 @@ module.exports = function (app) {
   app.route("/vocabBox/maybeYouLike/:category_id").get(todoVocabBox.list_MaybeYouLikeVocab);
   app.route("/admin/deleteVocabBox/:vocabBox_id").delete(todoVocabBox.delete_a_VocabBox);
   app.route("/vocabBoxAndCate").get(todoVocabBox.get_AllVocabBoxAndCate);
-
+  app.route("/vocabBox/id/:vocabBoxId").get(todoVocabBox.list_vocabBox_by_vocabBoxId2);
 
   app.route("/newVocab").get(todoVocabBox.read_a_vocab_new);
 
