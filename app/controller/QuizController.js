@@ -60,6 +60,14 @@ exports.listChalengeInContent = function (req, res) {
   });
 };
 
+exports.update_a_Quiz = function (req, res) {
+  var new_quiz = new Quiz(req.body);
+  Quiz.updateQuiz(new_quiz, req.params.quizId, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, quiz });
+  });
+};
+
 exports.get_a_quiz_by_type = function (req, res) {
   Quiz.getQuizByType(req.params.type, req.params.reading_id, function (
     err,

@@ -50,6 +50,19 @@ Quiz.getAllQuiz = function (result) {
   });
 };
 
+Quiz.updateQuiz = function (newQuiz, quizId, result) {
+  sql.query("UPDATE Question set ? where question_id = " + quizId, newQuiz, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
+
 Quiz.getQuizByQuizId = function (quizId, result) {
   sql.query("Select question from Question where question_id = ?", quizId, function (
     err,

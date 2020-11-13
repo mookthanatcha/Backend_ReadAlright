@@ -23,6 +23,7 @@ module.exports = function (app) {
 
   app.route("/QChoice").post(todoQChoice.create_a_QChoice);
   app.route("/admin/deleteChoice/:choice_id").delete(todoQChoice.delete_a_choice);
+  app.route("/admin/updateChoice/:choiceId").put(todoChoice.update_a_choice);
 
 
 
@@ -54,6 +55,7 @@ module.exports = function (app) {
   app.route("/quiz/type/:type/:reading_id").get(todoQuiz.get_a_quiz_by_type);
   app.route("/quizInContent/:reading_id").get(todoQuiz.listChalengeInContent)
   app.route("/admin/deleteQuiz/:question_id").delete(todoQuiz.delete_a_Quiz);
+  app.route("/admin/updateQuiz/:quizId").put(todoQuiz.update_a_Quiz);
 
 
 

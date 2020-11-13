@@ -25,6 +25,19 @@ Choice.createChoice = function (newchoice, result) {
   });
 };
 
+Choice.updateChoice = function (newChoice, choiceId, result) {
+  sql.query("UPDATE Question_Choices set ? where choice_id = " + choiceId, newChoice, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
+
 Choice.deleteChoice = function (choice_id, result) {
   sql.query("DELETE FROM Question_Choices WHERE choice_id = ?", choice_id, function (err, res) {
     if (err) {

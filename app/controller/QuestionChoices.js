@@ -17,6 +17,14 @@ exports.delete_a_choice = function (req, res) {
   });
 }
 
+exports.update_a_choice = function (req, res) {
+  var new_choice = new Choice(req.body);
+  Choice.updateChoice(new_choice, req.params.choiceId, function (err, quiz) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, quiz });
+  });
+};
+
 exports.list_all_choice = function (req, res) {
   Choice.getAllChoice(function (err, choice) {
     console.log("controller");
