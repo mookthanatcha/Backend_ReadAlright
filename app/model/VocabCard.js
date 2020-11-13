@@ -24,7 +24,7 @@ VocabCard.createVocabCard = function (newVocabCard, result) {
 };
 
 VocabCard.deleteVocabCard = function (vocabCard_id, result) {
-  sql.query("DELETE FROM VocabCard WHERE vocabBox_id = ?", vocabCard_id, function (err, res) {
+  sql.query("DELETE FROM VocabCard WHERE vocabCard_id = ?", vocabCard_id, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
