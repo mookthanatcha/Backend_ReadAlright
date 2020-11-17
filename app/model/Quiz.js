@@ -64,7 +64,7 @@ Quiz.updateQuiz = function (newQuiz, quizId, result) {
 };
 
 Quiz.getQuizByQuizId = function (quizId, result) {
-  sql.query("Select question from Question where question_id = ?", quizId, function (
+  sql.query("Select question, typeOfSuggestion_id from Question where question_id = ?", quizId, function (
     err,
     res
   ) {

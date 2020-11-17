@@ -38,9 +38,12 @@ exports.get_a_quiz_by_id = function (req, res) {
     Choice.getQuizByQuizId(req.params.quizId, function (err, choice) {
       // res.json({ quiz, data: [{ choice: choice }] });
       var temp = JSON.stringify(quiz)
+      console.log("quiz")
+      console.log(quiz)
       var tempsub = temp.substring(13, temp.length - 2);
       console.log(tempsub)
-      res.json({ questionText: tempsub, questionType: "SelectionGroup", options: choice });
+      console.log(quiz.typeOfSuggestion_id)
+      res.json({ questionText: tempsub, questionType: "SelectionGroup", quiz,options: choice });
 
     });
   });
