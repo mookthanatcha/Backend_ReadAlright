@@ -17,7 +17,10 @@ module.exports = function (app) {
   var todoChoicePretest = require("../controller/ChoicePreController");
   var todoQChoice = require("../controller/QuestionChoices");
   var todoQPre = require("../controller/QuizPretestController");
+  var todoAdmin = require("../controller/adminController");
 
+
+  app.route("/createAdmin").post(todoAdmin.create_a_admin).get(todoAdmin.list_all_admin);
 
   app.route("/QPre").post(todoQPre.create_a_QPre)
 

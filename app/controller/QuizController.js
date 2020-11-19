@@ -40,7 +40,7 @@ exports.get_a_quiz_by_id = function (req, res) {
       var temp = JSON.stringify(quiz)
       console.log("quiz")
       console.log(temp)
-      var tempsub = temp.substring(13, temp.length - 27);
+      var tempsub = temp.substring(14, temp.length - 27);
       var type = temp.substring(temp.length - 3,temp.length - 2)
       console.log(tempsub)
       console.log("typeOfSuggestion_id")
