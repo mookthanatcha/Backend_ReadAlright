@@ -8,6 +8,7 @@ var User = function (user) {
   this.level = user.level
   this.image = user.image;
   this.uid = user.uid
+  this.isTested= user.isTested
 };
 
 User.createUser = function (newUser, result) {
@@ -41,6 +42,18 @@ User.getUserByUuid = function (uuId, result) {
   );
 };
 
+User.updateUsere = function (newUser, uuId, result) {
+  sql.query("UPDATE Users set ? where uid = '" + uuId+"'", newUser, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      res.message = "Okay";
+      console.log(res);
+      result(null, res);
+    }
+  });
+};
 User.getUserAdminByUuid = function (uuId, result) {
   sql.query(
     "Select * from admin where uid = ?",

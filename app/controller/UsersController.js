@@ -21,5 +21,11 @@ exports.get_UserByUuid = function (req, res) {
     res.json({ user });
   });
 }
-
+exports.update_a_user = function (req, res) {
+  var new_user = new Users(req.body);
+  User.updateUsere(new_user, req.params.uuId, function (err, user) {
+    if (err) res.send(err);
+    res.json({ error: "Invalid input", msg: res.message, user });
+  });
+};
 

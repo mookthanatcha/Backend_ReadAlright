@@ -38,6 +38,7 @@ module.exports = function (app) {
   app.route("/user").post(todoUser.create_a_user);
   app.route("/user/:uuId").get(todoUser.get_UserByUuid);
   app.route("/user/admin/:uuId").get(todoAdmin.getUserAdminByUuid);
+  app.route("/user/updateUser/:uuId").put(todoUser.update_a_user);
 
   //Answer
   app
