@@ -41,4 +41,21 @@ User.getUserByUuid = function (uuId, result) {
   );
 };
 
+User.getUserAdminByUuid = function (uuId, result) {
+  sql.query(
+    "Select * from admin where uid = ?",
+    uuId,
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
+
+
+
 module.exports = User;

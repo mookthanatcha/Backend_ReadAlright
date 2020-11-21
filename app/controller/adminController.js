@@ -23,3 +23,10 @@ exports.list_all_admin = function (req, res) {
       res.status(200).json({ quiz });
     });
   };
+
+  exports.getUserAdminByUuid = function (req, res) {
+    Admin.getUserAdminByUuid(req.params.uuId, function (err, user) {
+      if (err) res.send(err);
+      res.json({ user });
+    });
+  }
