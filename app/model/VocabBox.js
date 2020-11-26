@@ -59,7 +59,7 @@ VocabBox.getAllVocabBox = function(result) {
 }
 
 VocabBox.getAllVocabBoxAndCate = function(result) {
-  sql.query("Select * from VocabBox b join Category c on b.category_id = c.category_id", function(err,res){
+  sql.query("Select * from VocabBox b join Category c on b.category_id = c.category_id join VocabCard vc where b.vocabBox_id = vc.vocabBox_id", function(err,res){
       if (err) {
           console.log("error: ", err);
           result(null, err);
