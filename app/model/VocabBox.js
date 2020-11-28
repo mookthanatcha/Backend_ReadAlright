@@ -59,7 +59,7 @@ VocabBox.getAllVocabBox = function(result) {
 }
 
 VocabBox.getAllVocabBoxAndCate = function(result) {
-  sql.query("Select * from VocabBox b join Category c on b.category_id = c.category_id join VocabCard vc where b.vocabBox_id = vc.vocabBox_id", function(err,res){
+  sql.query("Select distinct * from VocabBox b join Category c on b.category_id = c.category_id join VocabCard vc where b.vocabBox_id = vc.vocabBox_id GROUP BY b.boxEngName;", function(err,res){
       if (err) {
           console.log("error: ", err);
           result(null, err);
@@ -131,7 +131,7 @@ VocabBox.getNewVocab = function (result) {
 
   VocabBox.getVocabByVocabBoxId = function (vocabBoxId, result) {
     sql.query(
-      "Select VocabBox.*,Category.*,VocabCard.* from VocabBox join Category on VocabBox.category_id = Category.category_id join VocabCard on VocabBox.vocabBox_id = VocabCard.vocabBox_id where VocabBox.vocabBox_id = ?",
+      "Select VocabBox.*,Category.* from VocabBox join Category on VocabBox.category_id = Category.category_id where VocabBox.vocabBox_id = ?",
       vocabBoxId,
       function (err, res) {
         if (err) {
